@@ -30,6 +30,9 @@ function HomePage() {
   return (
     <>
       <TaskBookContextProvider>
+        <title>HomePage</title>
+
+        <link rel="icon" type="image" href="/static/favicon.ico" />
         <Layout style={layoutStyle}>
           <AppHeader showButtons={true} />
           <Layout>

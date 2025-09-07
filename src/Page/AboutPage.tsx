@@ -14,6 +14,8 @@ const layoutStyle = {
 export function AboutPage() {
   return (
     <Layout style={layoutStyle}>
+      <title>About</title>
+      <link rel="icon" type="image" href="/static/favicon.ico" />
       <AppHeader />
       <AppAboutPage />
       <AppFooter />
