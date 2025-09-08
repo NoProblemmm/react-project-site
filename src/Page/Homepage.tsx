@@ -6,7 +6,6 @@ import { AppFooter } from "../components/Layout/AppFooter";
 import { taskBook } from "../tasks-file";
 import { AppContent } from "../components/Layout/AppContent";
 import { Book } from "../components/Layout/AppTaskDetails";
-import { TaskBookContextProvider } from "../context/taskbook-context";
 import { taskBookStore } from "../store/taskbook.store";
 import { observer } from "mobx-react-lite";
 
@@ -29,19 +28,17 @@ function HomePage() {
 
   return (
     <>
-      <TaskBookContextProvider>
-        <title>HomePage</title>
+      <title>HomePage</title>
 
-        <link rel="icon" type="image" href="/static/favicon.ico" />
-        <Layout style={layoutStyle}>
-          <AppHeader showButtons={true} />
-          <Layout>
-            <AppSider />
-            <AppContent />
-          </Layout>
-          <AppFooter />
+      <link rel="icon" type="image" href="/static/favicon.ico" />
+      <Layout style={layoutStyle}>
+        <AppHeader showButtons={true} />
+        <Layout>
+          <AppSider />
+          <AppContent />
         </Layout>
-      </TaskBookContextProvider>
+        <AppFooter />
+      </Layout>
     </>
   );
 }
