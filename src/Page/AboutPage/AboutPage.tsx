@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Layout } from "antd";
-import { AppHeader } from "../components/Layout/AppHeader";
-import { AppFooter } from "../components/Layout/AppFooter";
-import { AppAboutPage } from "../components/AppAboutPage";
+// @ts-ignore
+import { AppHeader } from "@components/Layout/AppHeader";
+// @ts-ignore
+import { AppFooter } from "@components/Layout/AppFooter";
+// @ts-ignore
+import { AppAboutPage } from "@components/AppAboutPage";
 
 const layoutStyle = {
   borderRadius: 8,

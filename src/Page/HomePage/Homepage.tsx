@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { Layout } from "antd";
-import { AppHeader } from "../components/Layout/AppHeader";
-import { AppSider } from "../components/Layout/AppSider";
-import { AppFooter } from "../components/Layout/AppFooter";
-import { taskBook } from "../tasks-file";
-import { AppContent } from "../components/Layout/AppContent";
-import { Book } from "../components/Layout/AppTaskDetails";
-import { taskBookStore } from "../store/taskbook.store";
+import { taskBook } from "../../tasks-file";
 import { observer } from "mobx-react-lite";
+// @ts-ignore
+import { AppHeader } from "@components/Layout/AppHeader";
+// @ts-ignore
+import { AppSider } from "@components/Layout/AppSider";
+// @ts-ignore
+import { AppFooter } from "@components/Layout/AppFooter";
+// @ts-ignore
+import { AppContent } from "@components/Layout/AppContent";
+// @ts-ignore
+import { Book } from "@components/Layout/AppTaskDetails";
 
 const layoutStyle = {
   borderRadius: 8,

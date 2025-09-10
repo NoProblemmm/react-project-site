@@ -1,18 +1,13 @@
 import React from "react";
-import { Form, Input, Button, Divider, List, Typography } from "antd";
+import { Form, Input, Button, Divider, List, Typography, Alert } from "antd";
 import { Note } from "./AppTaskDetails";
-import { noteBook } from "../../tasks-file";
-import { useState, useEffect } from "react";
 import { noteBookStore } from "../../store/notes.store";
 import { observer } from "mobx-react-lite";
 
 const data = ["Adsasd", "SAdasda", "asdasdas"];
 
-const validateMessages = {
-  required: "'${name}' is required!",
-};
-
 export const AppNotes = observer(() => {
+  const [form] = Form.useForm();
   const { noteBook, addNotes, deleteNotes } = noteBookStore;
   let nextId = noteBook.length + 1;
 
@@ -25,11 +20,13 @@ export const AppNotes = observer(() => {
     };
 
     addNotes(newNote);
+    form.resetFields();
   };
 
   return (
     <>
       <Form
+        form={form}
         name="wrap"
         labelCol={{ flex: "110px" }}
         labelAlign="left"
@@ -38,9 +35,18 @@ export const AppNotes = observer(() => {
         colon={false}
         style={{ maxWidth: 600 }}
         onFinish={addNewNote}
-        validateMessages={validateMessages}
       >
-        <Form.Item label="Note:" name="note">
+        <Alert
+          message=" Please add the name Note ..."
+          type="info"
+          showIcon
+          style={{ marginBottom: "1rem" }}
+        />
+        <Form.Item
+          label="Note:"
+          name="note"
+          rules={[{ required: true, message: "Please Add the Name Note!" }]}
+        >
           <Input />
         </Form.Item>
 

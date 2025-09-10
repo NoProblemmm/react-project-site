@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CloseOutlined } from "@ant-design/icons";
-import { Button, Card, Form, Input, Space, Typography } from "antd";
+import { Button, Card, Form, Input, Space, Typography, Alert } from "antd";
 import { useState } from "react";
 import { Book, Task } from "./AppTaskDetails";
 import { taskBookStore } from "../../store/taskbook.store";
 
-export function AppModal() {
+type Props = {
+  setModal: any;
+};
+
+export function AppModal({ setModal }: Props) {
   const [form] = Form.useForm();
   const { addBook } = taskBookStore;
   let count = 1;
@@ -24,7 +28,10 @@ export function AppModal() {
       };
 
       addBook(newBook);
+      form.resetFields();
+
       count = 1;
+      setModal(false);
     }
   }
 
@@ -49,7 +56,20 @@ export function AppModal() {
                 title={`Book`}
                 key={field.key}
               >
-                <Form.Item label="Book" name={[field.name, "title"]}>
+                <Alert
+                  message=" Please add the name book and tasks ..."
+                  type="info"
+                  showIcon
+                  style={{ marginBottom: "1rem" }}
+                />
+                <Form.Item
+                  label="Book"
+                  name={[field.name, "title"]}
+                  dependencies={["bookTitle"]}
+                  rules={[
+                    { required: true, message: "Please Add the Name Book!" },
+                  ]}
+                >
                   <Input name="title" />
                 </Form.Item>
 

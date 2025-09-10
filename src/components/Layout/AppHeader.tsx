@@ -25,6 +25,7 @@ type Props = {
 export function AppHeader({ showButtons }: Props) {
   const [modal, setModal] = useState(false);
   const [drawer, setDrawer] = useState(false);
+  const onFinishModal = false;
 
   return (
     <>
@@ -43,7 +44,7 @@ export function AppHeader({ showButtons }: Props) {
           footer={null}
           onCancel={() => setModal(false)}
         >
-          {showButtons && <AppModal />}
+          {showButtons && <AppModal setModal={setModal} />}
         </Modal>
 
         <Link to="/" className="mr-2">

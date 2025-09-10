@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { AboutPage } from "../Page/AboutPage";
-import { TodosReq } from "../Page/TodosReq";
+import { TodosReq } from "../Page/TodosReq/TodosReq";
 
 export const Route = createFileRoute("/todos")({
   component: TodosReq,
