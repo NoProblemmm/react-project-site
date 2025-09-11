@@ -83,7 +83,15 @@ export const AppContent = observer(() => {
                   <div style={{ display: "flex" }}>
                     <div style={{ width: "125rem" }}>
                       <Typography.Text mark></Typography.Text>
-                      {task.id}| {task.name}
+                      {task.complited ? (
+                        <s>
+                          {task.id}| {task.name}
+                        </s>
+                      ) : (
+                        <>
+                          {task.id}| {task.name}
+                        </>
+                      )}
                     </div>
                     <div style={{ width: "50%" }}>
                       <Checkbox

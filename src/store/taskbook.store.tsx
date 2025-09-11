@@ -19,6 +19,7 @@ class TaskBookStore {
   deleteBook = (id: number | string) => {
     this.taskBooks = this.taskBooks.filter((book: Book) => book.id !== id);
     console.log("Удаление книги с №:", id);
+    this.selectedBook = null;
   };
 
   selectBook = (book: Book) => {
