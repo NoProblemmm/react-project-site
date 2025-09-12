@@ -3,21 +3,18 @@ import { Divider, Layout } from "antd";
 import { Card, Button } from "antd";
 import { taskBookStore } from "../../store/taskbook.store";
 import { observer } from "mobx-react-lite";
+import { useTheme } from "../../theme/ThemeContext";
 const { Sider } = Layout;
-
-const siderStyle: React.CSSProperties = {
-  lineHeight: "120px",
-  width: "100%",
-  height: "50rem",
-  color: "#fff",
-  backgroundColor: "#1d1d1dff",
-};
 
 export const AppSider = observer(() => {
   const { deleteBook, taskBooks, selectBook } = taskBookStore;
+  const { theme } = useTheme();
 
   return (
-    <Sider width="25%" style={siderStyle}>
+    <Sider
+      width="25%"
+      className={`sider-custom ${theme === "dark" ? "dark" : "light"} `}
+    >
       <div
         style={{
           width: "100%",
@@ -32,7 +29,8 @@ export const AppSider = observer(() => {
             key={book.id}
             title={book.title}
             variant="borderless"
-            style={{ margin: "3px", width: "99%", background: "#ffffffff" }}
+            className={`card-custom ${theme === "dark" ? "dark" : "light"}`}
+            style={{ margin: "3px", width: "99%" }}
           >
             <div
               style={{

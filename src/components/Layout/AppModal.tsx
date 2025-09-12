@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { CloseOutlined } from "@ant-design/icons";
-import { Button, Card, Form, Input, Space, Typography, Alert } from "antd";
-import { useState } from "react";
+import { Button, Card, Form, Input, Space, Alert } from "antd";
 import { Book, Task } from "./AppTaskDetails";
 import { taskBookStore } from "../../store/taskbook.store";
 

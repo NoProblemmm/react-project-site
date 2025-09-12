@@ -1,8 +1,6 @@
-import { observer, Observer } from "mobx-react-lite";
+import { observer } from "mobx-react-lite";
 import todosStore from "../store/todos.store";
 import { useEffect } from "react";
-import Layout from "antd/es/layout/layout";
-import { AppHeader } from "./Layout/AppHeader";
 import { List, Typography, Spin } from "antd";
 
 const AppTodosPage = observer(() => {

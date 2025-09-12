@@ -1,22 +1,12 @@
 import React from "react";
 import { Button, Layout, Modal, Drawer } from "antd";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AppModal } from "./AppModal";
 import "@ant-design/v5-patch-for-react-19";
 import { AppNotes } from "./AppNotes";
-import { noteBook } from "../../tasks-file";
 import { Link } from "@tanstack/react-router";
-import { Book } from "./AppTaskDetails";
+import { useTheme } from "../../theme/ThemeContext";
 const { Header } = Layout;
-
-const headerStyle: React.CSSProperties = {
-  textAlign: "center",
-  color: "#fff",
-  height: 64,
-  paddingInline: 48,
-  lineHeight: "64px",
-  backgroundColor: "#363636ff",
-};
 
 type Props = {
   showButtons?: boolean;
@@ -25,11 +15,14 @@ type Props = {
 export function AppHeader({ showButtons }: Props) {
   const [modal, setModal] = useState(false);
   const [drawer, setDrawer] = useState(false);
+  const { theme, switchTheme } = useTheme();
   const onFinishModal = false;
 
   return (
     <>
-      <Header style={headerStyle}>
+      <Header
+        className={`header-custom ${theme === "dark" ? "dark" : "light"} text-center color-#fff `}
+      >
         {showButtons && (
           <Button
             style={{ float: "left", marginTop: "1rem" }}
@@ -60,15 +53,19 @@ export function AppHeader({ showButtons }: Props) {
             Todos
           </Button>
         </Link>
+
         {showButtons && (
-          <Button
-            style={{ float: "right", marginTop: "1rem" }}
-            onClick={() => setDrawer(true)}
-          >
+          <Button className="float-right mt-4" onClick={() => setDrawer(true)}>
             Notes
           </Button>
         )}
-
+        <Button
+          type="dashed"
+          className="mt-4 mr-4 float-right"
+          onClick={switchTheme}
+        >
+          {theme === "dark" ? "Light Theme" : "Dark Theme"}
+        </Button>
         <Drawer
           width={600}
           destroyOnHidden

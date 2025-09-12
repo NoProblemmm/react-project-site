@@ -3,6 +3,7 @@ import { Layout, Button } from "antd";
 import { Divider, List, Typography, Checkbox, Progress } from "antd";
 import { taskBookStore } from "../../store/taskbook.store";
 import { observer } from "mobx-react-lite";
+import { useTheme } from "../../theme/ThemeContext";
 
 const { Content } = Layout;
 
@@ -10,16 +11,18 @@ const contentStyle: React.CSSProperties = {
   textAlign: "left",
   width: "100%",
   height: "50rem",
-  color: "#000000ff",
-  backgroundColor: "#ffffffff",
 };
 
 export const AppContent = observer(() => {
   const selectedBook = taskBookStore.selectedBook;
+  const { theme } = useTheme();
   const { deleteBook } = taskBookStore;
   if (!selectedBook || selectedBook == null) {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div
+        style={{ width: "100%", height: "100%" }}
+        className={`content-custom ${theme === "dark" ? "dark" : "light"} text-center color-#fff `}
+      >
         <Divider orientation="left">Look Book</Divider>
       </div>
     );
@@ -38,7 +41,10 @@ export const AppContent = observer(() => {
 
   return (
     <>
-      <Content style={contentStyle}>
+      <Content
+        style={contentStyle}
+        className={`content-custom ${theme === "dark" ? "dark" : "light"} text-center color-#fff `}
+      >
         <>
           <Divider orientation="left">{selectedBook.title}</Divider>
           <div

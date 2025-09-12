@@ -1,18 +1,19 @@
 import React from "react";
-import { Flex, Layout, Typography } from "antd";
-
-const { Footer, Sider, Content } = Layout;
-
-const footerStyle: React.CSSProperties = {
-  textAlign: "center",
-  color: "#fff",
-  backgroundColor: "#363636ff",
-};
+import { Layout, Typography } from "antd";
+import { useTheme } from "../../theme/ThemeContext";
+const { Footer } = Layout;
 
 export function AppFooter() {
+  const { theme } = useTheme();
   return (
-    <Footer style={footerStyle}>
-      <Typography style={{ color: "#fff" }}>TaskBook</Typography>
+    <Footer
+      className={`footer-custom ${theme === "dark" ? "dark" : "light"} text-center `}
+    >
+      <Typography
+        className={`footer-custom ${theme === "dark" ? "dark" : "light"} text-center `}
+      >
+        TaskBook
+      </Typography>
     </Footer>
   );
 }

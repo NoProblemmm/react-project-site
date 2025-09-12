@@ -4,8 +4,6 @@ import { Note } from "./AppTaskDetails";
 import { noteBookStore } from "../../store/notes.store";
 import { observer } from "mobx-react-lite";
 
-const data = ["Adsasd", "SAdasda", "asdasdas"];
-
 export const AppNotes = observer(() => {
   const [form] = Form.useForm();
   const { noteBook, addNotes, deleteNotes } = noteBookStore;

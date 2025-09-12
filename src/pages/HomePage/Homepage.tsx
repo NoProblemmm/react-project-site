@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { Layout } from "antd";
 import { taskBook } from "../../tasks-file";
 import { observer } from "mobx-react-lite";
+import { ConfigProvider } from "antd";
+import { theme } from "antd";
+
+const { darkAlgorithm, defaultAlgorithm } = theme;
 // @ts-ignore
 import { AppHeader } from "@components/Layout/AppHeader";
 // @ts-ignore
@@ -25,17 +29,13 @@ type State = {
 };
 
 function HomePage() {
-  const [taskBooks, setTaskBooks] = useState<Book[]>(taskBook.taskBooks);
-  const addNewBook = (newBook: Book) => {
-    setTaskBooks([...taskBooks, newBook]);
-  };
-
   return (
     <>
       <title>HomePage</title>
 
       <link rel="icon" type="image" href="/static/favicon.ico" />
-      <Layout style={layoutStyle}>
+
+      <Layout>
         <AppHeader showButtons={true} />
         <Layout>
           <AppSider />
