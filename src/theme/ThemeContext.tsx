@@ -5,7 +5,7 @@ const ThemeContext = createContext({
   switchTheme: () => {},
 });
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
+export function ThemeProvider({ children }: { children: React.ReactElement }) {
   const [theme, setTheme] = useState(getInitialTheme());
 
   function getInitialTheme() {

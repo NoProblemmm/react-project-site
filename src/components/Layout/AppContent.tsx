@@ -21,7 +21,7 @@ export const AppContent = observer(() => {
     return (
       <div
         style={{ width: "100%", height: "100%" }}
-        className={`content-custom ${theme === "dark" ? "dark" : "light"} text-center color-#fff `}
+        className={`content-custom ${theme === "dark" ? "dark" : "light"} text-center  `}
       >
         <Divider orientation="left">Look Book</Divider>
       </div>
@@ -43,10 +43,15 @@ export const AppContent = observer(() => {
     <>
       <Content
         style={contentStyle}
-        className={`content-custom ${theme === "dark" ? "dark" : "light"} text-center color-#fff `}
+        className={`content-custom ${theme === "dark" ? "dark" : "light"} text-center `}
       >
         <>
-          <Divider orientation="left">{selectedBook.title}</Divider>
+          <Divider
+            orientation="left"
+            className={`content-custom ${theme === "dark" ? "dark" : "light"} text-center  `}
+          >
+            {selectedBook.title}
+          </Divider>
           <div
             style={{
               width: "88rem",

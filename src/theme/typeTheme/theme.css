@@ -38,6 +38,8 @@
 }
 
 .content-custom {
+  background-color: var(--content-bg-color);
+  color: var(--text-color);
 }
 
 .footer-custom {
