@@ -50,7 +50,7 @@ export const AppContent = observer(() => {
 
   return (
     <>
-      <Content style={contentStyle} className="content-custom">
+      <Content style={contentStyle} className="content-custom ">
         <>
           <Divider
             orientation="left"

@@ -6,7 +6,7 @@ const { Footer } = Layout;
 export function AppFooter() {
   const { theme } = useTheme();
   return (
-    <Footer className="footer-custom">
+    <Footer className="footer-custom ">
       <Typography className="footer-custom text-center">TaskBook</Typography>
     </Footer>
   );
