@@ -48,6 +48,7 @@ html[data-theme="light"] {
 .ant-layout {
   background: var(--content-bg-color) !important;
   transition: background-color 500ms linear;
+  overflow-x: hidden;
 }
 
 .header-custom {
