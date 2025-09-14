@@ -1,6 +1,5 @@
-import React from "react";
+import React, { memo, useState, useCallback } from "react";
 import { Button, Layout, Modal, Drawer } from "antd";
-import { useState, useEffect } from "react";
 import { AppModal } from "./AppModal";
 import "@ant-design/v5-patch-for-react-19";
 import { AppNotes } from "./AppNotes";
@@ -12,11 +11,15 @@ type Props = {
   showButtons?: boolean;
 };
 
-export function AppHeader({ showButtons }: Props) {
+export const AppHeader = memo(({ showButtons }: Props) => {
   const [modal, setModal] = useState(false);
   const [drawer, setDrawer] = useState(false);
   const { theme, switchTheme } = useTheme();
-  const onFinishModal = false;
+
+  const handleOpenModal = useCallback(() => setModal(true), []);
+  const handleCloseModal = useCallback(() => setModal(false), []);
+  const handleOpenDrawer = useCallback(() => setDrawer(true), []);
+  const handleCloseDrawer = useCallback(() => setDrawer(false), []);
 
   return (
     <>
@@ -24,7 +27,7 @@ export function AppHeader({ showButtons }: Props) {
         {showButtons && (
           <Button
             style={{ float: "left", marginTop: "1rem" }}
-            onClick={() => setModal(true)}
+            onClick={handleOpenModal}
           >
             New Tasks
           </Button>
@@ -33,10 +36,10 @@ export function AppHeader({ showButtons }: Props) {
           title="Add TaskBook"
           open={modal}
           footer={null}
-          onCancel={() => setModal(false)}
+          onCancel={handleCloseModal}
           className="ant-modal-title "
         >
-          {showButtons && <AppModal setModal={setModal} />}
+          {showButtons && <AppModal handleCloseModal={handleCloseModal} />}
         </Modal>
 
         <Link to="/" className="mr-2">
@@ -54,7 +57,7 @@ export function AppHeader({ showButtons }: Props) {
         </Link>
 
         {showButtons && (
-          <Button className="float-right mt-4" onClick={() => setDrawer(true)}>
+          <Button className="float-right mt-4" onClick={handleOpenDrawer}>
             Notes
           </Button>
         )}
@@ -70,7 +73,7 @@ export function AppHeader({ showButtons }: Props) {
           destroyOnHidden
           title="Notes"
           className="ant-modal-content"
-          onClose={() => setDrawer(false)}
+          onClose={handleCloseDrawer}
           open={drawer}
         >
           <AppNotes />
@@ -78,4 +81,4 @@ export function AppHeader({ showButtons }: Props) {
       </Header>
     </>
   );
-}
+});

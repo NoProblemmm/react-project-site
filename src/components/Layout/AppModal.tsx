@@ -5,10 +5,10 @@ import { Book, Task } from "./AppTaskDetails";
 import { taskBookStore } from "../../store/taskbook.store";
 
 type Props = {
-  setModal: any;
+  handleCloseModal: () => void;
 };
 
-export function AppModal({ setModal }: Props) {
+export function AppModal({ handleCloseModal }: Props) {
   const [form] = Form.useForm();
   const { addBook } = taskBookStore;
   let count = 1;
@@ -30,7 +30,7 @@ export function AppModal({ setModal }: Props) {
       form.resetFields();
 
       count = 1;
-      setModal(false);
+      handleCloseModal();
     }
   }
 
