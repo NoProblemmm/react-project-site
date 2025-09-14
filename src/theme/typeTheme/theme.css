@@ -120,6 +120,7 @@ html[data-theme="light"] {
   background-color: var(--modal-bg-color) !important;
   color: var(--text-color) !important;
   border-color: var(--text-color) !important;
+  border-radius: 10px;
 }
 
 .ant-form-item-required {

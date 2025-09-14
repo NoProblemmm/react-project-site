@@ -14,7 +14,9 @@ declare module "@tanstack/react-router" {
 function App() {
   return (
     // <ThemeProvider>
+
     <RouterProvider router={router} />
+
     // </ThemeProvider>
   );
 }

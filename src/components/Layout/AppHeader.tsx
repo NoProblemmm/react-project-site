@@ -34,7 +34,7 @@ export function AppHeader({ showButtons }: Props) {
           open={modal}
           footer={null}
           onCancel={() => setModal(false)}
-          className="ant-modal-title"
+          className="ant-modal-title "
         >
           {showButtons && <AppModal setModal={setModal} />}
         </Modal>
