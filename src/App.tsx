@@ -1,7 +1,7 @@
 import React from "react";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
-import { ThemeProvider } from "./theme/ThemeContext";
+import "./theme/typeTheme/theme.css";
 
 const router = createRouter({ routeTree });
 
@@ -13,9 +13,9 @@ declare module "@tanstack/react-router" {
 
 function App() {
   return (
-    <ThemeProvider>
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    // <ThemeProvider>
+    <RouterProvider router={router} />
+    // </ThemeProvider>
   );
 }
 

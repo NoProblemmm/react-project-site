@@ -14,13 +14,19 @@ const AppTodosPage = observer(() => {
       {!isLoading ? (
         <List
           bordered
+          style={{
+            color: "var(--text-color)",
+            borderColor: "var(--text-color)",
+          }}
           dataSource={todos}
           renderItem={(todo) => (
             <List.Item>
-              <Typography.Text>
-                {todo.todo} -{" "}
-                {todo.completed ? "Задача выполнена" : "Задача в процессе"}
-              </Typography.Text>
+              <div className="content-custom  ">
+                <Typography.Text className="content-custom">
+                  {todo.todo} -{" "}
+                  {todo.completed ? "Задача выполнена" : "Задача в процессе"}
+                </Typography.Text>
+              </div>
             </List.Item>
           )}
         />

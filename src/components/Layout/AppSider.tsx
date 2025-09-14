@@ -3,7 +3,7 @@ import { Divider, Layout } from "antd";
 import { Card, Button } from "antd";
 import { taskBookStore } from "../../store/taskbook.store";
 import { observer } from "mobx-react-lite";
-import { useTheme } from "../../theme/ThemeContext";
+import { useTheme } from "../../theme/SwitchTheme";
 const { Sider } = Layout;
 
 export const AppSider = observer(() => {
@@ -11,17 +11,14 @@ export const AppSider = observer(() => {
   const { theme } = useTheme();
 
   return (
-    <Sider
-      width="25%"
-      className={`sider-custom ${theme === "dark" ? "dark" : "light"} `}
-    >
+    <Sider width="25%" className="sider-custom">
       <div
+        className="scrollbar-sider"
         style={{
           width: "100%",
           overflowX: "hidden",
           height: "50rem",
           overflowY: "scroll",
-          scrollbarColor: "#000000ff #b6b6b6ff",
         }}
       >
         {taskBooks.map((book) => (
@@ -29,8 +26,7 @@ export const AppSider = observer(() => {
             key={book.id}
             title={book.title}
             variant="borderless"
-            className={`card-custom ${theme === "dark" ? "dark" : "light"}`}
-            style={{ margin: "3px", width: "99%" }}
+            className="card-custom mr-3 w-111"
           >
             <div
               style={{

@@ -3,7 +3,7 @@ import { Layout, Button } from "antd";
 import { Divider, List, Typography, Checkbox, Progress } from "antd";
 import { taskBookStore } from "../../store/taskbook.store";
 import { observer } from "mobx-react-lite";
-import { useTheme } from "../../theme/ThemeContext";
+import { useTheme } from "../../theme/SwitchTheme";
 
 const { Content } = Layout;
 
@@ -21,9 +21,18 @@ export const AppContent = observer(() => {
     return (
       <div
         style={{ width: "100%", height: "100%" }}
-        className={`content-custom ${theme === "dark" ? "dark" : "light"} text-center  `}
+        className="content-custom "
       >
-        <Divider orientation="left">Look Book</Divider>
+        <Divider
+          orientation="left"
+          className="content-custom "
+          style={{
+            color: "var(--text-color)",
+            borderColor: "var(--text-color)",
+          }}
+        >
+          Look Book
+        </Divider>
       </div>
     );
   }
@@ -41,17 +50,19 @@ export const AppContent = observer(() => {
 
   return (
     <>
-      <Content
-        style={contentStyle}
-        className={`content-custom ${theme === "dark" ? "dark" : "light"} text-center `}
-      >
+      <Content style={contentStyle} className="content-custom">
         <>
           <Divider
             orientation="left"
-            className={`content-custom ${theme === "dark" ? "dark" : "light"} text-center  `}
+            className="content-custom "
+            style={{
+              color: "var(--text-color)",
+              borderColor: "var(--text-color)",
+            }}
           >
             {selectedBook.title}
           </Divider>
+
           <div
             style={{
               width: "88rem",
@@ -62,14 +73,15 @@ export const AppContent = observer(() => {
           >
             <List
               style={{
-                borderColor: "#000",
-                color: "#000",
+                color: "var(--text-color)",
+                borderColor: "var(--text-color)",
               }}
               header={<div>Tasks:</div>}
               footer={
                 <>
                   <Progress
                     style={{ width: "100%" }}
+                    className="ant-progress-text"
                     percent={progressValue}
                     percentPosition={{ align: "center", type: "outer" }}
                   />
@@ -91,8 +103,8 @@ export const AppContent = observer(() => {
               rowKey={(task) => task.id}
               renderItem={(task, index) => (
                 <List.Item style={{ color: "#000" }}>
-                  <div style={{ display: "flex" }}>
-                    <div style={{ width: "125rem" }}>
+                  <div className="flex ">
+                    <div className="content-custom w-500 ">
                       <Typography.Text mark></Typography.Text>
                       {task.complited ? (
                         <s>

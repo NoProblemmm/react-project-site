@@ -5,7 +5,7 @@ import { AppModal } from "./AppModal";
 import "@ant-design/v5-patch-for-react-19";
 import { AppNotes } from "./AppNotes";
 import { Link } from "@tanstack/react-router";
-import { useTheme } from "../../theme/ThemeContext";
+import { useTheme } from "../../theme/SwitchTheme";
 const { Header } = Layout;
 
 type Props = {
@@ -20,9 +20,7 @@ export function AppHeader({ showButtons }: Props) {
 
   return (
     <>
-      <Header
-        className={`header-custom ${theme === "dark" ? "dark" : "light"} text-center color-#fff `}
-      >
+      <Header className=" header-custom text-center color-#fff ">
         {showButtons && (
           <Button
             style={{ float: "left", marginTop: "1rem" }}

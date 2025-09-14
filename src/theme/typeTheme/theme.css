@@ -1,48 +1,111 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme {
 }
-.light {
-  --header-bg-color: #a7a7a7;
-  --text-color: #000;
-  --sider-bg-color: #535353;
-  --card-bg-color: #ffffff;
-  --content-bg-color: #fff;
-  --footer-bg-color: #a7a7a7;
+
+html[data-theme="dark"] {
+  --button-text-color: #fff;
+  --button-background-color: #363636;
+  --button-border-color: #2d5091;
+
+  --input-text-color: #fff;
+  --input-placeholder-text-color: #c2c2c2;
+  --input-background-color: #a3a3a3;
+  --input-border-color: #0a0068;
+
+  --background-color: #000000;
+  --icon-book-color: #838383;
+  --text-color: #fff;
+
+  --sider-bg-color: #040029;
+  --sider-card-bg-color: #050631;
+
+  --content-bg-color: #050631;
 }
 
-.dark {
-  --header-bg-color: #3a3a3a;
-  --text-color: #ffffff;
-  --sider-bg-color: #000000;
-  --card-bg-color: #e9e9e9;
-  --content-bg-color: #ebebeb;
-  --footer-bg-color: #3a3a3a;
+html[data-theme="light"] {
+  --button-text-color: #000000;
+  --button-background-color: #b1b1b1;
+  --button-border-color: #0059ff;
+
+  --input-text-color: #000000;
+  --input-placeholder-text-color: #707070;
+  --input-background-color: #ffffff;
+  --input-border-color: #1100ff;
+
+  --background-color: #b9b9b9;
+  --icon-book-color: #000000;
+  --text-color: #000000;
+
+  --sider-bg-color: #8d8d8d;
+  --sider-card-bg-color: #adadad;
+
+  --content-bg-color: #a5a5a5;
+}
+
+.ant-layout {
+  background: var(--content-bg-color) !important;
+  transition: background-color 500ms linear;
 }
 
 .header-custom {
-  background-color: var(--header-bg-color);
+  background-color: var(--background-color);
   color: var(--text-color);
+  transition:
+    background-color 500ms linear,
+    color 900ms linear;
 }
 
 .sider-custom {
   background-color: var(--sider-bg-color);
   color: var(--text-color);
+  transition:
+    background-color 500ms linear,
+    color 900ms linear;
 }
 
 .card-custom {
-  background-color: var(--card-bg-color);
+  background-color: var(--sider-card-bg-color);
+  border-color: var(--text-color);
+
+  margin-top: 5px;
+  transition: background-color 500ms linear;
+}
+.ant-card-head-title {
   color: var(--text-color);
+  transition: color 900ms linear;
 }
 
 .content-custom {
   background-color: var(--content-bg-color);
-  color: var(--text-color);
+  color: var(--text-color) !important;
+  transition:
+    background-color 500ms linear,
+    color 900ms linear;
+}
+.content-abpa-point {
+  background-color: var(--sider-bg-color);
+  color: var(--text-color) !important;
+  transition:
+    background-color 500ms linear,
+    color 900ms linear;
+}
+
+.ant-progress-text {
+  color: var(--text-color) !important;
 }
 
 .footer-custom {
-  background-color: var(--footer-bg-color);
+  background-color: var(--background-color);
   color: var(--text-color);
+  transition:
+    background-color 500ms linear,
+    color 900ms linear;
+}
+
+.scrollbar-sider {
+  scrollbar-color: var(--text-color) var(--sider-bg-color);
+  transition: scrollbar-color 200ms linear;
 }
