@@ -40,6 +40,7 @@ export function AppModal({ setModal }: Props) {
       wrapperCol={{ span: 18 }}
       form={form}
       name="dynamic_form_complex"
+      className="ant-modal-content"
       style={{ maxWidth: 600 }}
       autoComplete="off"
       initialValues={{ items: [{}] }}
@@ -47,13 +48,20 @@ export function AppModal({ setModal }: Props) {
     >
       <Form.List name="items">
         {(fields, { add, remove }) => (
-          <div style={{ display: "flex", rowGap: 16, flexDirection: "column" }}>
+          <div
+            style={{
+              display: "flex",
+              rowGap: 16,
+              flexDirection: "column",
+            }}
+            className="ant-modal-content"
+          >
             {fields.map((field) => (
               <Card
-                style={{ marginTop: "1rem" }}
                 size="small"
                 title={`Book`}
                 key={field.key}
+                className="ant-modal-content"
               >
                 <Alert
                   message=" Please add the name book and tasks ..."
@@ -72,7 +80,10 @@ export function AppModal({ setModal }: Props) {
                   <Input name="title" />
                 </Form.Item>
 
-                <Form.Item label="Tasks">
+                <Form.Item
+                  label="Tasks"
+                  className="ant-form-item-required custom-label"
+                >
                   <Form.List name={[field.name, "tasks"]}>
                     {(subFields, subOpt) => (
                       <div
@@ -119,6 +130,7 @@ export function AppModal({ setModal }: Props) {
           style={{
             marginLeft: "9rem",
           }}
+          className="mt-[1rem]"
         >
           Add New TaskBook
         </Button>

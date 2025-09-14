@@ -23,6 +23,8 @@ html[data-theme="dark"] {
   --sider-card-bg-color: #00013f;
 
   --content-bg-color: #050631;
+
+  --modal-bg-color: #120055;
 }
 
 html[data-theme="light"] {
@@ -43,6 +45,8 @@ html[data-theme="light"] {
   --sider-card-bg-color: #adadad;
 
   --content-bg-color: #a5a5a5;
+
+  --modal-bg-color: #ffffff;
 }
 
 .ant-layout {
@@ -109,4 +113,26 @@ html[data-theme="light"] {
 .scrollbar-sider {
   scrollbar-color: var(--text-color) var(--sider-bg-color);
   transition: scrollbar-color 200ms linear;
+}
+
+.ant-modal-content,
+.ant-modal-title {
+  background-color: var(--modal-bg-color) !important;
+  color: var(--text-color) !important;
+  border-color: var(--text-color) !important;
+}
+
+.ant-form-item-required {
+  color: var(--text-color) !important;
+}
+.custom-label .ant-form-item-label > label {
+  color: var(--text-color);
+}
+
+.anticon {
+  color: var(--text-color) !important;
+}
+
+:where(.css-dev-only-do-not-override-kbg4zp).ant-alert-info .ant-alert-icon {
+  color: #0c00b9 !important;
 }

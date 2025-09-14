@@ -34,6 +34,7 @@ export function AppHeader({ showButtons }: Props) {
           open={modal}
           footer={null}
           onCancel={() => setModal(false)}
+          className="ant-modal-title"
         >
           {showButtons && <AppModal setModal={setModal} />}
         </Modal>
@@ -68,6 +69,7 @@ export function AppHeader({ showButtons }: Props) {
           width={600}
           destroyOnHidden
           title="Notes"
+          className="ant-modal-content"
           onClose={() => setDrawer(false)}
           open={drawer}
         >

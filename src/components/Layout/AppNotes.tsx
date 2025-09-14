@@ -32,6 +32,7 @@ export const AppNotes = observer(() => {
         wrapperCol={{ flex: 1 }}
         colon={false}
         style={{ maxWidth: 600 }}
+        className="ant-modal-content"
         onFinish={addNewNote}
       >
         <Alert
@@ -54,17 +55,23 @@ export const AppNotes = observer(() => {
           </Button>
         </Form.Item>
       </Form>
-      <Divider orientation="left">Notes</Divider>
+      <Divider orientation="left" className="ant-modal-content">
+        Notes
+      </Divider>
 
       <List
         style={{ borderColor: "#000", color: "#000" }}
         header={<div>Note:</div>}
         footer={"..."}
+        className="ant-modal-content"
         dataSource={noteBook}
         bordered
         renderItem={(note) => (
           <List.Item style={{ color: "#000" }}>
-            <div style={{ display: "flex", width: "100%" }}>
+            <div
+              style={{ display: "flex", width: "100%" }}
+              className="ant-modal-content"
+            >
               <div style={{ width: "29rem" }}>
                 <Typography.Text mark></Typography.Text>
                 {note.title}
