@@ -16,10 +16,14 @@ export const AppHeader = memo(({ showButtons }: Props) => {
   const [drawer, setDrawer] = useState(false);
   const { theme, switchTheme } = useTheme();
 
-  const handleOpenModal = useCallback(() => setModal(true), []);
-  const handleCloseModal = useCallback(() => setModal(false), []);
-  const handleOpenDrawer = useCallback(() => setDrawer(true), []);
-  const handleCloseDrawer = useCallback(() => setDrawer(false), []);
+  const handleModal = useCallback(
+    () => setModal((prev) => (!prev ? true : false)),
+    []
+  );
+  const handleDrawer = useCallback(
+    () => setDrawer((prev) => (!prev ? true : false)),
+    []
+  );
 
   return (
     <>
@@ -27,7 +31,7 @@ export const AppHeader = memo(({ showButtons }: Props) => {
         {showButtons && (
           <Button
             style={{ float: "left", marginTop: "1rem" }}
-            onClick={handleOpenModal}
+            onClick={handleModal}
           >
             New Tasks
           </Button>
@@ -36,10 +40,10 @@ export const AppHeader = memo(({ showButtons }: Props) => {
           title="Add TaskBook"
           open={modal}
           footer={null}
-          onCancel={handleCloseModal}
+          onCancel={handleModal}
           className="ant-modal-title "
         >
-          {showButtons && <AppModal handleCloseModal={handleCloseModal} />}
+          {showButtons && <AppModal handleCloseModal={handleModal} />}
         </Modal>
 
         <Link to="/" className="mr-2">
@@ -57,7 +61,7 @@ export const AppHeader = memo(({ showButtons }: Props) => {
         </Link>
 
         {showButtons && (
-          <Button className="float-right mt-4" onClick={handleOpenDrawer}>
+          <Button className="float-right mt-4" onClick={handleDrawer}>
             Notes
           </Button>
         )}
@@ -73,7 +77,7 @@ export const AppHeader = memo(({ showButtons }: Props) => {
           destroyOnHidden
           title="Notes"
           className="ant-modal-content"
-          onClose={handleCloseDrawer}
+          onClose={handleDrawer}
           open={drawer}
         >
           <AppNotes />
