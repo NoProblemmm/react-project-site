@@ -18,6 +18,7 @@ export const AppContent = memo(
     const selectedBook = taskBookStore.selectedBook;
     const { theme } = useTheme();
     const { deleteBook } = taskBookStore;
+
     if (!selectedBook || selectedBook == null) {
       return (
         <div
