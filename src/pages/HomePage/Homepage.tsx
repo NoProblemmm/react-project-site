@@ -1,8 +1,6 @@
-import React, { useState } from "react";
-import { Layout } from "antd";
-import { taskBook } from "../../tasks-file";
+import React, { useState, useEffect } from "react";
+import { Layout, Spin } from "antd";
 import { observer } from "mobx-react-lite";
-import { ConfigProvider } from "antd";
 
 // @ts-ignore
 import { AppHeader } from "@components/Layout/AppHeader";
@@ -12,28 +10,40 @@ import { AppSider } from "@components/Layout/AppSider";
 import { AppFooter } from "@components/Layout/AppFooter";
 // @ts-ignore
 import { AppContent } from "@components/Layout/AppContent";
-// @ts-ignore
-import { Book } from "@components/Layout/AppTaskDetails";
-
-type State = {
-  taskBooks: Book[];
-};
 
 function HomePage() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timerLoading = setTimeout(() => {
+      setIsLoading(false);
+      console.log("");
+    }, 200);
+    return () => clearTimeout(timerLoading);
+  }, []);
+
   return (
     <>
       <title>HomePage</title>
 
       <link rel="icon" type="image" href="/static/favicon.ico" />
-
-      <Layout>
-        <AppHeader showButtons={true} />
+      {!isLoading ? (
         <Layout>
-          <AppSider />
-          <AppContent />
+          <AppHeader showButtons={true} />
+          <Layout>
+            <AppSider />
+            <AppContent />
+          </Layout>
+          <AppFooter />
         </Layout>
-        <AppFooter />
-      </Layout>
+      ) : (
+        <div style={{ width: "100%", height: "100%" }}>
+          <Spin
+            size="large"
+            style={{ marginTop: "20%", width: "100%", height: "500px" }}
+          />
+        </div>
+      )}
     </>
   );
 }
