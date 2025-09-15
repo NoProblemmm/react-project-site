@@ -45,7 +45,6 @@ export const AppContent = observer(() => {
     selectedBook.tasks.length > 0
       ? Math.round((completedCount / selectedBook.tasks.length) * 100)
       : 0;
-  console.log("Спавен");
   return (
     <>
       <Content style={contentStyle} className="content-custom ">
