@@ -14,6 +14,7 @@ class TodosStore {
 
   constructor() {
     makeAutoObservable(this);
+    this.getAll = this.getAll.bind(this);
     reaction(
       () => this.todos.length,
       (newLengs) => {
@@ -27,17 +28,20 @@ class TodosStore {
     );
   }
 
-  getAll = action(async () => {
-    this.isLoading = true;
+  async getAll() {
+    if (this.todos.length > 0) {
+      return;
+    }
+    runInAction(() => (this.isLoading = true));
     try {
       const res = await axios.get("https://dummyjson.com/todos");
-      this.todos = res.data.todos;
+      runInAction(() => (this.todos = res.data.todos));
     } catch (error) {
       console.log("error", error);
     } finally {
-      this.isLoading = false;
+      runInAction(() => (this.isLoading = false));
     }
-  });
+  }
 }
 
 export default new TodosStore();
