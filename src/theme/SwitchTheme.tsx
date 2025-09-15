@@ -1,4 +1,10 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, {
+  useState,
+  useLayoutEffect,
+  memo,
+  useCallback,
+  useMemo,
+} from "react";
 const isDarkTheme = window?.matchMedia("(prefers-color-scheme: dark").matches;
 const defaultTheme = isDarkTheme ? "dark" : "light";
 
@@ -7,10 +13,10 @@ export const useTheme = () => {
     localStorage.getItem("app-theme") || defaultTheme
   );
 
-  const switchTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-    return;
-  };
+  const switchTheme = useCallback(
+    () => setTheme((prev) => (prev === "dark" ? "light" : "dark")),
+    []
+  );
   useLayoutEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("app-theme", theme);
