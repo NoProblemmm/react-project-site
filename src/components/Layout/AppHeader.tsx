@@ -7,6 +7,8 @@ import { Link } from "@tanstack/react-router";
 import { useTheme } from "../../theme/SwitchTheme";
 import LanguageSwitcher from "../../localization/hooks/useTranslation";
 import { useTranslation } from "react-i18next";
+import { Trans } from "@lingui/react/macro";
+import { AppLocales } from "../../locales/hooks/AppLocales";
 
 const { Header } = Layout;
 
@@ -22,16 +24,17 @@ export const AppHeader = memo(({ showButtons }: Props) => {
 
   const handleModal = useCallback(() => setModal((prev) => !prev), []);
   const handleDrawer = useCallback(() => setDrawer((prev) => !prev), []);
-
+  //{t("navigation.PageAddTask")}
   return (
     <>
-      <Header className="header-custom text-center color-#fff">
+      <Header className="header-custom text-center ">
         {showButtons && (
           <Button
             style={{ float: "left", marginTop: "1rem" }}
             onClick={handleModal}
           >
-            {t("navigation.PageAddTask")}
+            {/* Использование lingui*/}
+            <Trans>New Task</Trans>
           </Button>
         )}
         <Modal
@@ -52,6 +55,7 @@ export const AppHeader = memo(({ showButtons }: Props) => {
         <Link to="/about" className="mr-2">
           <Button type="dashed"> {t("navigation.PageAboutPage")}</Button>
         </Link>
+
         <Link to="/todos" className="mr-2">
           <Button type="dashed" style={{ marginLeft: "1rem" }}>
             {t("navigation.PageTodoPage")}
@@ -63,6 +67,7 @@ export const AppHeader = memo(({ showButtons }: Props) => {
             {t("navigation.PageNotes")}
           </Button>
         )}
+        <AppLocales />
         <LanguageSwitcher />
         <Button
           type="dashed"
@@ -73,6 +78,7 @@ export const AppHeader = memo(({ showButtons }: Props) => {
             ? t("navigation.PageTheme.light")
             : t("navigation.PageTheme.dark")}
         </Button>
+
         <Drawer
           width={600}
           destroyOnHidden
