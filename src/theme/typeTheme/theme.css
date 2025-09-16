@@ -23,6 +23,7 @@ html[data-theme="dark"] {
   --sider-card-bg-color: #00013f;
 
   --content-bg-color: #050631;
+  --content-sider-color: #050631;
 
   --modal-bg-color: #120055;
 }
@@ -45,6 +46,7 @@ html[data-theme="light"] {
   --sider-card-bg-color: #adadad;
 
   --content-bg-color: #a5a5a5;
+  --content-sider-color: #a5a5a5;
 
   --modal-bg-color: #ffffff;
 }
@@ -112,6 +114,10 @@ html[data-theme="light"] {
 
 .scrollbar-sider {
   scrollbar-color: var(--text-color) var(--sider-bg-color);
+  transition: scrollbar-color 200ms linear;
+}
+.scrollbar-sider-content {
+  scrollbar-color: var(--text-color) var(--content-sider-color);
   transition: scrollbar-color 200ms linear;
 }
 
