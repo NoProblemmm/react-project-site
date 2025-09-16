@@ -5,7 +5,7 @@ import "@ant-design/v5-patch-for-react-19";
 import { AppNotes } from "./AppNotes";
 import { Link } from "@tanstack/react-router";
 import { useTheme } from "../../theme/SwitchTheme";
-import LanguageSwitcher from "../../localization/hooks/useTranslation";
+import LanguageSwitcher from "../../localization/hooks/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
 import { Trans } from "@lingui/react/macro";
 import { AppLocales } from "../../locales/hooks/AppLocales";
