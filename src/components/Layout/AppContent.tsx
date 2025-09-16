@@ -62,14 +62,7 @@ export const AppContent = observer(() => {
             {selectedBook.title}
           </Divider>
 
-          <div
-            style={{
-              width: "88rem",
-              height: "46rem",
-              overflowY: "scroll",
-              overflowX: "hidden",
-            }}
-          >
+          <div className="max-w-[88rem] h-[100%] overflow-y-scroll overflow-x-hidden scrollbar-sider-content">
             <List
               style={{
                 color: "var(--text-color)",
@@ -79,8 +72,8 @@ export const AppContent = observer(() => {
               footer={
                 <>
                   <Progress
+                    className="ant-progress-text max-w-[100%]"
                     style={{ width: "100%" }}
-                    className="ant-progress-text"
                     percent={progressValue}
                     percentPosition={{ align: "center", type: "outer" }}
                   />
@@ -88,7 +81,7 @@ export const AppContent = observer(() => {
                     {progressValue === 100 && (
                       <Button
                         type="primary"
-                        style={{ marginBottom: "1rem" }}
+                        className="mb-[1rem]"
                         onClick={() => deleteBook(selectedBook.id)}
                       >
                         {t("navigation.PageContentTableFinishTask")}
@@ -101,9 +94,9 @@ export const AppContent = observer(() => {
               dataSource={selectedBook.tasks}
               rowKey={(task) => task.id}
               renderItem={(task, index) => (
-                <List.Item style={{ color: "#000" }}>
-                  <div className="flex ">
-                    <div className="content-custom w-500 ">
+                <List.Item className="text-amber-50">
+                  <div className="flex justify-between items-center w-full">
+                    <div className="content-custom flex items-center">
                       <Typography.Text mark></Typography.Text>
                       {task.complited ? (
                         <s>
@@ -115,16 +108,13 @@ export const AppContent = observer(() => {
                         </>
                       )}
                     </div>
-                    <div style={{ width: "50%" }}>
+                    <div className=" float-right">
                       <Checkbox
                         checked={task.complited}
                         onChange={(event) =>
                           handleCheck(index, event?.target.checked)
                         }
-                        style={{
-                          width: "50px",
-                          transform: "scale(2.5)",
-                        }}
+                        className="float-right  transform scale-250"
                       ></Checkbox>
                     </div>
                   </div>
