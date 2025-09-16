@@ -3,6 +3,7 @@ import { Layout, Button } from "antd";
 import { Divider, List, Typography, Checkbox, Progress } from "antd";
 import { taskBookStore } from "../../store/taskbook.store";
 import { observer } from "mobx-react-lite";
+import { useTranslation } from "react-i18next";
 
 const { Content } = Layout;
 
@@ -14,6 +15,7 @@ const contentStyle: React.CSSProperties = {
 
 export const AppContent = observer(() => {
   const { deleteBook, selectedBook } = taskBookStore;
+  const { t } = useTranslation();
 
   if (!selectedBook || selectedBook == null) {
     return (
@@ -29,7 +31,7 @@ export const AppContent = observer(() => {
             borderColor: "var(--text-color)",
           }}
         >
-          Look Book
+          {t("navigation.PageContentDivider")}
         </Divider>
       </div>
     );
@@ -73,7 +75,7 @@ export const AppContent = observer(() => {
                 color: "var(--text-color)",
                 borderColor: "var(--text-color)",
               }}
-              header={<div>Tasks:</div>}
+              header={t("navigation.PageContentTableTitile") + ":"}
               footer={
                 <>
                   <Progress
@@ -89,7 +91,7 @@ export const AppContent = observer(() => {
                         style={{ marginBottom: "1rem" }}
                         onClick={() => deleteBook(selectedBook.id)}
                       >
-                        Закончить задачу
+                        {t("navigation.PageContentTableFinishTask")}
                       </Button>
                     )}
                   </div>

@@ -1,14 +1,16 @@
-import React from "react";
+import React, { memo } from "react";
 import { CloseOutlined } from "@ant-design/icons";
 import { Button, Card, Form, Input, Space, Alert } from "antd";
-import { Book, Task } from "./AppTaskDetails";
+import { Book } from "./AppTaskDetails";
 import { taskBookStore } from "../../store/taskbook.store";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   handleCloseModal: () => void;
 };
 
-export function AppModal({ handleCloseModal }: Props) {
+export const AppModal = memo(({ handleCloseModal }: Props) => {
+  const { t } = useTranslation();
   const [form] = Form.useForm();
   const { addBook } = taskBookStore;
   let count = 1;
@@ -59,29 +61,32 @@ export function AppModal({ handleCloseModal }: Props) {
             {fields.map((field) => (
               <Card
                 size="small"
-                title={`Book`}
+                title={t("navigation.ModalSubTitle")}
                 key={field.key}
                 className="ant-modal-content"
               >
                 <Alert
-                  message=" Please add the name book and tasks ..."
+                  message={t("navigation.ModalHint") + " ..."}
                   type="info"
                   showIcon
                   style={{ marginBottom: "1rem" }}
                 />
                 <Form.Item
-                  label="Book"
+                  label={t("navigation.ModalInpTitleBook")}
                   name={[field.name, "title"]}
                   dependencies={["bookTitle"]}
                   rules={[
-                    { required: true, message: "Please Add the Name Book!" },
+                    {
+                      required: true,
+                      message: t("navigation.ModalRulesMessage"),
+                    },
                   ]}
                 >
                   <Input name="title" />
                 </Form.Item>
 
                 <Form.Item
-                  label="Tasks"
+                  label={t("navigation.ModalInpTitleTask")}
                   className="ant-form-item-required custom-label"
                 >
                   <Form.List name={[field.name, "tasks"]}>
@@ -96,7 +101,12 @@ export function AppModal({ handleCloseModal }: Props) {
                         {subFields.map((subField) => (
                           <Space key={subField.key}>
                             <Form.Item noStyle name={[subField.name, "task"]}>
-                              <Input placeholder="task" name="task" />
+                              <Input
+                                placeholder={t(
+                                  "navigation.ModalPlaceHolderTask"
+                                )}
+                                name="task"
+                              />
                             </Form.Item>
                             <CloseOutlined
                               onClick={() => {
@@ -110,7 +120,7 @@ export function AppModal({ handleCloseModal }: Props) {
                           onClick={() => subOpt.add()}
                           block
                         >
-                          + Add Sub TaskBook
+                          {t("navigation.ModalInpAddTask")}
                         </Button>
                       </div>
                     )}
@@ -132,9 +142,9 @@ export function AppModal({ handleCloseModal }: Props) {
           }}
           className="mt-[1rem]"
         >
-          Add New TaskBook
+          {t("navigation.ModalButtonAddTaskBook")}
         </Button>
       </Form.Item>
     </Form>
   );
-}
+});

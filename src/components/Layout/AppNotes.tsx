@@ -3,8 +3,11 @@ import { Form, Input, Button, Divider, List, Typography, Alert } from "antd";
 import { Note } from "./AppTaskDetails";
 import { noteBookStore } from "../../store/notes.store";
 import { observer } from "mobx-react-lite";
+import { useTranslation } from "react-i18next";
 
 export const AppNotes = observer(() => {
+  const { t } = useTranslation();
+
   const [form] = Form.useForm();
   const { noteBook, addNotes, deleteNotes } = noteBookStore;
   let nextId = noteBook.length + 1;
@@ -36,7 +39,7 @@ export const AppNotes = observer(() => {
         onFinish={addNewNote}
       >
         <Alert
-          message=" Please add the name Note ..."
+          message={t("navigation.NotesDrawerHint") + " ..."}
           type="info"
           showIcon
           style={{ marginBottom: "1rem" }}
@@ -44,24 +47,29 @@ export const AppNotes = observer(() => {
         <Form.Item
           label="Note:"
           name="note"
-          rules={[{ required: true, message: "Please Add the Name Note!" }]}
+          rules={[
+            {
+              required: true,
+              message: t("navigation.NotesDrawerHint") + "!",
+            },
+          ]}
         >
           <Input />
         </Form.Item>
 
         <Form.Item label=" ">
           <Button type="primary" htmlType="submit">
-            Add Note
+            {t("navigation.NotesDrawerButtonAddNote")}
           </Button>
         </Form.Item>
       </Form>
       <Divider orientation="left" className="ant-modal-content">
-        Notes
+        {t("navigation.NotesDrawerDividerTitle")}
       </Divider>
 
       <List
         style={{ borderColor: "#000", color: "#000" }}
-        header={<div>Note:</div>}
+        header={<div>{t("navigation.NotesDrawerInpTitle") + ":"}</div>}
         footer={"..."}
         className="ant-modal-content"
         dataSource={noteBook}
@@ -83,7 +91,7 @@ export const AppNotes = observer(() => {
                   style={{ flex: "right" }}
                   onClick={() => deleteNotes(note.id)}
                 >
-                  DEL
+                  {t("navigation.NotesDrawerButtonDelite")}
                 </Button>
               </div>
             </div>

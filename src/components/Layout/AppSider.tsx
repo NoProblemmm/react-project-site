@@ -4,9 +4,11 @@ import { Card, Button } from "antd";
 import { taskBookStore } from "../../store/taskbook.store";
 import { observer } from "mobx-react-lite";
 import { useTheme } from "../../theme/SwitchTheme";
+import { useTranslation } from "react-i18next";
 const { Sider } = Layout;
 
 export const AppSider = observer(() => {
+  const { t } = useTranslation();
   const { deleteBook, taskBooks, selectBook } = taskBookStore;
   const { theme } = useTheme();
 
@@ -27,14 +29,14 @@ export const AppSider = observer(() => {
                 variant="outlined"
                 onClick={() => deleteBook(book.id)}
               >
-                Delite
+                {t("navigation.PageCardButtonDelite")}
               </Button>
               <Button
                 color="blue"
                 variant="outlined"
                 onClick={() => selectBook(book)}
               >
-                Look
+                {t("navigation.PageCardButtonLook")}
               </Button>
             </div>
           </Card>
