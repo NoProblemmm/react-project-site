@@ -96,26 +96,35 @@ export const AppContent = observer(() => {
               renderItem={(task, index) => (
                 <List.Item className="text-amber-50">
                   <div className="flex justify-between items-center w-full">
-                    <div className="content-custom flex items-center">
-                      <Typography.Text mark></Typography.Text>
-                      {task.complited ? (
-                        <s>
-                          {task.id}| {task.name}
-                        </s>
-                      ) : (
-                        <>
-                          {task.id}| {task.name}
-                        </>
-                      )}
+                    <div className="flex items-center w-full overflow-hidden">
+                      <div
+                        style={{
+                          whiteSpace: "normal",
+                          wordBreak: "break-word",
+                          overflowWrap: "break-word",
+                          maxWidth: "100%",
+                        }}
+                        className="break-words whitespace-normal"
+                      >
+                        {task.complited ? (
+                          <s>
+                            {task.id}| {task.name}
+                          </s>
+                        ) : (
+                          <>
+                            {task.id}| {task.name}
+                          </>
+                        )}
+                      </div>
                     </div>
-                    <div className=" float-right">
+                    <div className="ml-4">
                       <Checkbox
                         checked={task.complited}
                         onChange={(event) =>
                           handleCheck(index, event?.target.checked)
                         }
-                        className="float-right  transform scale-250"
-                      ></Checkbox>
+                        className="transform scale-250"
+                      />
                     </div>
                   </div>
                 </List.Item>
