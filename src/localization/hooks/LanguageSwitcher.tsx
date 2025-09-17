@@ -19,17 +19,11 @@ export default function LanguageSwitcher() {
   return (
     <>
       {language === "en" ? (
-        <Button
-          className="float-right mt-4 mr-4"
-          onClick={() => changeLanguage("ru")}
-        >
+        <Button className="" onClick={() => changeLanguage("ru")}>
           RU{" "}
         </Button>
       ) : (
-        <Button
-          className="float-right mt-4 mr-4"
-          onClick={() => changeLanguage("en")}
-        >
+        <Button className="" onClick={() => changeLanguage("en")}>
           EN{" "}
         </Button>
       )}
