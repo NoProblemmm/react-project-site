@@ -27,16 +27,14 @@ export const AppHeader = memo(({ showButtons }: Props) => {
   //{t("navigation.PageAddTask")}
   return (
     <>
-      <Header className="header-custom text-center ">
+      <Header className="header-custom text-center flex-col ">
         {showButtons && (
-          <Button
-            style={{ float: "left", marginTop: "1rem" }}
-            onClick={handleModal}
-          >
+          <Button onClick={handleModal} className="sm:m-1">
             {/* Использование lingui*/}
             <Trans>New Task</Trans>
           </Button>
         )}
+
         <Modal
           title={t("navigation.ModalTitle")}
           open={modal}
@@ -47,33 +45,32 @@ export const AppHeader = memo(({ showButtons }: Props) => {
           {showButtons && <AppModal handleCloseModal={handleModal} />}
         </Modal>
 
-        <Link to="/" className="mr-2">
-          <Button type="dashed" style={{ marginRight: "1rem" }}>
+        <Link to="/">
+          <Button type="dashed" className="w-full sm:w-auto">
             {t("navigation.PageTaskPage")}
           </Button>
         </Link>
-        <Link to="/about" className="mr-2">
-          <Button type="dashed"> {t("navigation.PageAboutPage")}</Button>
+        <Link to="/about">
+          <Button type="dashed" className="w-full sm:w-auto sm:m-1">
+            {" "}
+            {t("navigation.PageAboutPage")}
+          </Button>
         </Link>
 
-        <Link to="/todos" className="mr-2">
-          <Button type="dashed" style={{ marginLeft: "1rem" }}>
+        <Link to="/todos">
+          <Button type="dashed" className="w-full sm:w-auto">
             {t("navigation.PageTodoPage")}
           </Button>
         </Link>
 
         {showButtons && (
-          <Button className="float-right mt-4" onClick={handleDrawer}>
+          <Button className="w-full sm:w-auto sm:m-1" onClick={handleDrawer}>
             {t("navigation.PageNotes")}
           </Button>
         )}
         <AppLocales />
         <LanguageSwitcher />
-        <Button
-          type="dashed"
-          className="mt-4 mr-4 float-right"
-          onClick={switchTheme}
-        >
+        <Button type="dashed" className="sm:m-1" onClick={switchTheme}>
           {theme === "dark"
             ? t("navigation.PageTheme.light")
             : t("navigation.PageTheme.dark")}
