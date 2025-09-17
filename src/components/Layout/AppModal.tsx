@@ -133,17 +133,16 @@ export const AppModal = memo(({ handleCloseModal }: Props) => {
       </Form.List>
 
       <Form.Item noStyle shouldUpdate>
-        <Button
-          type="primary"
-          shape="round"
-          htmlType="submit"
-          style={{
-            marginLeft: "9rem",
-          }}
-          className="mt-[1rem]"
-        >
-          {t("navigation.ModalButtonAddTaskBook")}
-        </Button>
+        <div className="w-full text-center">
+          <Button
+            type="primary"
+            shape="round"
+            htmlType="submit"
+            className="mt-[1rem]"
+          >
+            {t("navigation.ModalButtonAddTaskBook")}
+          </Button>
+        </div>
       </Form.Item>
     </Form>
   );
