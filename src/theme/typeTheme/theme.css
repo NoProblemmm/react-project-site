@@ -60,6 +60,13 @@ html[data-theme="light"] {
 .header-custom {
   background-color: var(--background-color);
   color: var(--text-color);
+  height: auto;
+
+  @media (width< 640px) {
+    display: flex;
+    line-height: 0px;
+  }
+
   transition:
     background-color 500ms linear,
     color 900ms linear;
@@ -145,4 +152,20 @@ html[data-theme="light"] {
 
 :where(.css-dev-only-do-not-override-xepvsj).ant-alert-info .ant-alert-icon {
   color: #0c00b9 !important;
+}
+
+:where(.css-dev-only-do-not-override-xepvsj).ant-card .ant-card-body {
+  padding-right: 10px;
+  @media (width< 640px) {
+    padding-right: 2px;
+    .btn-look {
+      width: 84px;
+    }
+  }
+}
+:where(.css-dev-only-do-not-override-xepvsj).ant-card .ant-card-head {
+  @media (width< 640px) {
+    padding-right: 5px;
+    padding-left: 15px;
+  }
 }
