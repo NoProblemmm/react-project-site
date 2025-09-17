@@ -13,30 +13,31 @@ export const AppSider = observer(() => {
   const { theme } = useTheme();
 
   return (
-    <Sider width="25%" className="sider-custom h-screen">
+    <Sider width="25%" className="sider-custom h-screen ">
       <div className="scrollbar-sider w-[100%] overflow-x-hidden h-screen overflow-y-scroll ml-[2px]">
         {taskBooks.map((book) => (
           <Card
             key={book.id}
             title={book.title}
             variant="borderless"
-            className="card-custom mr-3 w-full border-1"
+            className="card-custom mr-3 w-full border-1 "
           >
             <div className="float-right relative justify-start">
               <Button
-                className="mr-[1rem]"
-                color="red"
-                variant="outlined"
-                onClick={() => deleteBook(book.id)}
-              >
-                {t("navigation.PageCardButtonDelite")}
-              </Button>
-              <Button
+                className="btn-look float-right"
                 color="blue"
                 variant="outlined"
                 onClick={() => selectBook(book)}
               >
                 {t("navigation.PageCardButtonLook")}
+              </Button>
+              <Button
+                className="mr-[1px] float-right"
+                color="red"
+                variant="outlined"
+                onClick={() => deleteBook(book.id)}
+              >
+                {t("navigation.PageCardButtonDelite")}
               </Button>
             </div>
           </Card>
