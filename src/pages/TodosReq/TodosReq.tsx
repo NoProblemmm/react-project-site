@@ -1,8 +1,8 @@
 import { Layout } from "antd";
 // @ts-ignore
-import { AppHeader } from "@components/Layout/AppHeader";
+import { AppHeader } from "@components/AppHomepage/AppHeader/AppHeader";
 // @ts-ignore
-import AppTodosPage from "@components/AppTodosPage";
+import AppTodosPage from "@components/AppTodosPage/AppTodosPage";
 
 export function TodosReq() {
   return (

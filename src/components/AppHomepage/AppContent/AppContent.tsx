@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { Layout, Button } from "antd";
 import { Divider, List, Typography, Checkbox, Progress } from "antd";
-import { taskBookStore } from "../../store/taskbook.store";
+import { taskBookStore } from "../../../store/taskbook.store";
 import { observer } from "mobx-react-lite";
 import { useTranslation } from "react-i18next";
 

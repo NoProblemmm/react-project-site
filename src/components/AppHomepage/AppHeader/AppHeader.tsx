@@ -1,14 +1,14 @@
 import React, { memo, useState, useCallback } from "react";
 import { Button, Layout, Modal, Drawer } from "antd";
-import { AppModal } from "./AppModal";
+import { AppModal } from "../AppModal/AppModal";
 import "@ant-design/v5-patch-for-react-19";
-import { AppNotes } from "./AppNotes";
+import { AppNotes } from "../AppNotes/AppNotes";
 import { Link } from "@tanstack/react-router";
-import { useTheme } from "../../theme/SwitchTheme";
-import LanguageSwitcher from "../../localization/hooks/LanguageSwitcher";
+import { useTheme } from "../../../theme/SwitchTheme";
+import LanguageSwitcher from "../../../localization/hooks/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
 import { Trans } from "@lingui/react/macro";
-import { AppLocales } from "../../locales/hooks/AppLocales";
+import { AppLocales } from "../../../locales/hooks/AppLocales";
 
 const { Header } = Layout;
 

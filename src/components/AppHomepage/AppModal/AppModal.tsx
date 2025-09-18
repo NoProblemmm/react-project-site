@@ -1,8 +1,8 @@
 import React, { memo } from "react";
 import { CloseOutlined } from "@ant-design/icons";
 import { Button, Card, Form, Input, Space, Alert } from "antd";
-import { Book } from "./AppTaskDetails";
-import { taskBookStore } from "../../store/taskbook.store";
+import { Book } from "../../AppTaskDetails/AppTaskDetails";
+import { taskBookStore } from "../../../store/taskbook.store";
 import { useTranslation } from "react-i18next";
 
 type Props = {

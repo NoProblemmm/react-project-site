@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Input, Button, Divider, List, Typography, Alert } from "antd";
-import { Note } from "./AppTaskDetails";
-import { noteBookStore } from "../../store/notes.store";
+import { Note } from "../../AppTaskDetails/AppTaskDetails";
+import { noteBookStore } from "../../../store/notes.store";
 import { observer } from "mobx-react-lite";
 import { useTranslation } from "react-i18next";
 

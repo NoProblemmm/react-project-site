@@ -5,13 +5,13 @@ import { I18nProvider } from "@lingui/react";
 import { i18n } from "@lingui/core";
 
 // @ts-ignore
-import { AppHeader } from "@components/Layout/AppHeader";
+import { AppHeader } from "@components/AppHomepage/AppHeader/AppHeader";
 // @ts-ignore
-import { AppSider } from "@components/Layout/AppSider";
+import { AppSider } from "@components/AppHomepage/AppSider/AppSider";
 // @ts-ignore
-import { AppFooter } from "@components/Layout/AppFooter";
+import { AppFooter } from "@components/AppHomepage/AppFooter/AppFooter";
 // @ts-ignore
-import { AppContent } from "@components/Layout/AppContent";
+import { AppContent } from "@components/AppHomepage/AppContent/AppContent";
 
 function HomePage() {
   const [isLoading, setIsLoading] = useState(true);

@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite";
-import todosStore from "../store/todos.store";
+import todosStore from "../../store/todos.store";
 import { useEffect } from "react";
 import { List, Typography, Spin } from "antd";
 

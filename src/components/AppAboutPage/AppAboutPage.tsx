@@ -1,6 +1,7 @@
 import { Layout, Typography } from "antd";
+import { memo } from "react";
 
-export function AppAboutPage() {
+const AppAboutPage = memo(() => {
   return (
     <Layout>
       <div className=" w-full h-200">
@@ -37,4 +38,6 @@ export function AppAboutPage() {
       </div>
     </Layout>
   );
-}
+});
+
+export default AppAboutPage;
