@@ -7,17 +7,27 @@
   border-radius: 5px;
   align-items: center;
   border: 1px solid #000000;
+  @media (width < 640px) {
+    gap: 2px;
+  }
 }
 
 .img-search {
   width: 1.2em;
   margin-left: 1em;
   cursor: pointer;
+  @media (width < 640px) {
+    width: 1.2em;
+    margin-left: 3px;
+  }
 }
 .img-close {
   width: 1.2em;
   margin-right: 1em;
   cursor: pointer;
+  @media (width < 640px) {
+    margin: 1px;
+  }
 }
 
 .search-input {
@@ -27,4 +37,7 @@
   border: none;
   font-size: 1rem;
   color: #000000;
+  @media (width < 640px) {
+    margin: 1px;
+  }
 }
