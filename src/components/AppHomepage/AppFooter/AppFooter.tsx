@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Layout, Typography } from "antd";
-import { useTheme } from "../../theme/SwitchTheme";
+import { useTheme } from "../../../theme/SwitchTheme";
 const { Footer } = Layout;
 
 export function AppFooter() {

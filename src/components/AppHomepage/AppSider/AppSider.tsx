@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Divider, Layout } from "antd";
 import { Card, Button } from "antd";
-import { taskBookStore } from "../../store/taskbook.store";
+import { taskBookStore } from "../../../store/taskbook.store";
 import { observer } from "mobx-react-lite";
-import { useTheme } from "../../theme/SwitchTheme";
+import { useTheme } from "../../../theme/SwitchTheme";
 import { useTranslation } from "react-i18next";
 const { Sider } = Layout;
 

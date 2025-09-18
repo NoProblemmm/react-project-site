@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { taskBook } from "../tasks-file";
-import { Book } from "../components/Layout/AppTaskDetails";
+import { Book } from "../components/AppTaskDetails/AppTaskDetails";
 import { useState } from "react";
 class TaskBookStore {
   taskBooks: Book[] = [];
