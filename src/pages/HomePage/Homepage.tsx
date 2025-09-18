@@ -31,11 +31,10 @@ function HomePage() {
         <link rel="icon" type="image" href="/static/favicon.ico" />
         {!isLoading ? (
           <div className="layout-container rounded-xs p-5">
-            <Layout className="layout-custom rounded-[2rem] shadow-black shadow-xl/30">
-              <meta
-                name="viewport"
-                content="width=device-width, initial-scale=1.0"
-              />
+            <Layout
+              className="layout-custom rounded-[2rem] shadow-black shadow-xl/30"
+              style={{ maxHeight: "55rem" }}
+            >
               <AppHeader showButtons={true} />
               <Layout>
                 <AppSider />

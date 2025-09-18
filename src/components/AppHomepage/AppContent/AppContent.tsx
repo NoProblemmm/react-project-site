@@ -95,7 +95,7 @@ export const AppContent = observer(() => {
               rowKey={(task) => task.id}
               renderItem={(task, index) => (
                 <List.Item className="text-amber-50">
-                  <div className="flex justify-between items-center w-full">
+                  <div className="content-custom flex justify-between items-center w-full">
                     <div className="flex items-center w-full overflow-hidden">
                       <div
                         style={{

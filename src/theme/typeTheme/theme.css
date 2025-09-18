@@ -52,7 +52,7 @@ html[data-theme="light"] {
 
   --modal-bg-color: #ffffff;
 
-  --layput-container-color: #ffffff;
+  --layput-container-color: #85858533;
 }
 
 .ant-layout {
@@ -65,15 +65,13 @@ html[data-theme="light"] {
   background-color: var(--background-color);
   color: var(--text-color);
   height: auto;
-
+  transition:
+    background-color 500ms linear,
+    color 900ms linear;
   @media (width< 640px) {
     display: flex;
     line-height: 0px;
   }
-
-  transition:
-    background-color 500ms linear,
-    color 900ms linear;
 }
 
 .sider-custom {
@@ -137,6 +135,7 @@ html[data-theme="light"] {
   background-color: var(--modal-bg-color) !important;
   color: var(--text-color) !important;
   border-color: var(--text-color) !important;
+  border-radius: 10px;
 }
 
 .ant-form-item-required {
@@ -151,7 +150,8 @@ html[data-theme="light"] {
 }
 
 .layout-container {
-  background: var(--layput-container-color) !important;
+  background-color: var(--layput-container-color) !important;
+  transition: background-color 200ms linear;
 }
 
 :where(.css-dev-only-do-not-override-kbg4zp).ant-alert-info .ant-alert-icon {

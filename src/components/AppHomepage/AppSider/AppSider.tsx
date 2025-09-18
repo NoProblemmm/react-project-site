@@ -31,7 +31,7 @@ export const AppSider = observer(() => {
   const taskBook = searchCardBook();
 
   return (
-    <Sider width="25%" className="sider-custom h-[100%] ">
+    <Sider width="25%" className="sider-custom h-[54rem] ">
       <div className="m-1">
         <SearchInput
           value={searchValue}
@@ -40,7 +40,7 @@ export const AppSider = observer(() => {
         />
       </div>
 
-      <div className="scrollbar-sider w-[99%] overflow-x-hidden h-screen overflow-y-scroll ml-[2px]">
+      <div className="scrollbar-sider w-[99%] overflow-x-hidden h-[51rem] overflow-y-scroll ml-[2px]">
         {taskBook.map((book) => (
           <Card
             key={book.id}
@@ -50,7 +50,7 @@ export const AppSider = observer(() => {
           >
             <div className="float-right relative justify-start">
               <Button
-                className="btn-look float-right"
+                className="float-right"
                 color="blue"
                 variant="outlined"
                 onClick={() => selectBook(book)}
