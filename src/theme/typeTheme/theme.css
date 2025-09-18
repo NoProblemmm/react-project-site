@@ -26,6 +26,8 @@ html[data-theme="dark"] {
   --content-sider-color: #050631;
 
   --modal-bg-color: #120055;
+
+  --layput-container-color: #11111180;
 }
 
 html[data-theme="light"] {
@@ -49,6 +51,8 @@ html[data-theme="light"] {
   --content-sider-color: #a5a5a5;
 
   --modal-bg-color: #ffffff;
+
+  --layput-container-color: #ffffff;
 }
 
 .ant-layout {
@@ -144,6 +148,10 @@ html[data-theme="light"] {
 
 .anticon {
   color: var(--text-color) !important;
+}
+
+.layout-container {
+  background: var(--layput-container-color) !important;
 }
 
 :where(.css-dev-only-do-not-override-kbg4zp).ant-alert-info .ant-alert-icon {

@@ -30,18 +30,20 @@ function HomePage() {
 
         <link rel="icon" type="image" href="/static/favicon.ico" />
         {!isLoading ? (
-          <Layout>
-            <meta
-              name="viewport"
-              content="width=device-width, initial-scale=1.0"
-            />
-            <AppHeader showButtons={true} />
-            <Layout>
-              <AppSider />
-              <AppContent />
+          <div className="layout-container rounded-xs p-5">
+            <Layout className="layout-custom rounded-[2rem] shadow-black shadow-xl/30">
+              <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1.0"
+              />
+              <AppHeader showButtons={true} />
+              <Layout>
+                <AppSider />
+                <AppContent />
+              </Layout>
+              <AppFooter />
             </Layout>
-            <AppFooter />
-          </Layout>
+          </div>
         ) : (
           <div style={{ width: "100%", height: "100%" }}>
             <Spin

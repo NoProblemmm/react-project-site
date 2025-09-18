@@ -7,21 +7,16 @@ import { AppFooter } from "@components/AppHomepage/AppFooter/AppFooter";
 // @ts-ignore
 import AppAboutPage from "@components/AppAboutPage/AppAboutPage";
 
-const layoutStyle = {
-  borderRadius: 8,
-  overflow: "hidden",
-  width: "calc(100% - 8px)",
-  maxWidth: "calc(100% - 8px)",
-};
-
 export function AboutPage() {
   return (
-    <Layout style={layoutStyle}>
-      <title>About</title>
-      <link rel="icon" type="image" href="/static/favicon.ico" />
-      <AppHeader />
-      <AppAboutPage />
-      <AppFooter />
-    </Layout>
+    <div className="layout-container  rounded-xs p-5">
+      <Layout className="rounded-[2rem] shadow-black shadow-xl/30">
+        <title>About</title>
+        <link rel="icon" type="image" href="/static/favicon.ico" />
+        <AppHeader />
+        <AppAboutPage />
+        <AppFooter />
+      </Layout>
+    </div>
   );
 }
