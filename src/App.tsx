@@ -15,10 +15,9 @@ declare module "@tanstack/react-router" {
 }
 
 function App() {
-  // Использование lingui
-
   useConnectSocket();
 
+  // Использование lingui
   useEffect(() => {
     const saveLocal = localStorage.getItem("language") || "en";
     if (saveLocal === "ru") {
