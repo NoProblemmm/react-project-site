@@ -37,7 +37,7 @@ export const AppContent = observer(() => {
     );
   }
   const handleCheck = (index: number, newComplited: boolean) => {
-    selectedBook.tasks[index].complited = newComplited;
+    taskBookStore.changeTaskCompletion(selectedBook.id, index, newComplited);
   };
   const completedCount = selectedBook.tasks.filter(
     (task: any) => task.complited
