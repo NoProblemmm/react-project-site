@@ -52,8 +52,12 @@ export const AppHeader = memo(
     const handleMessageModal = () => {
       setMessageModal((prev) => !prev);
       if (messageModal) {
-        taskBookStore.messageBook = [];
+        taskBookStore.clearMessage();
       }
+    };
+
+    const logout = () => {
+      console.log("EXIT");
     };
 
     const toggleMenu = () => {
@@ -109,7 +113,7 @@ export const AppHeader = memo(
                   ? t("navigation.PageTheme.light")
                   : t("navigation.PageTheme.dark")}
               </Button>
-              <div className="relative flex items-center float-right ">
+              <div className="relative flex items-center float-right gap-5 text-black">
                 <button
                   className="massage-bell relative flex items-center float-right mt-[1.3rem]"
                   onClick={handleMessageModal}
@@ -126,6 +130,16 @@ export const AppHeader = memo(
                   />
                 </button>
                 {messageModal && <MessageModal />}
+                <div className="h-9 bg-stone-400 w-[0.1px] rounded-2xl mt-4"></div>
+                <button
+                  className="massage-bell relative flex items-center float-right mt-[1.3rem]"
+                  onClick={logout}
+                >
+                  <img
+                    src="/static/exit.svg"
+                    className="w-8 header-img-bell "
+                  />
+                </button>
               </div>
               <Drawer
                 width={600}
