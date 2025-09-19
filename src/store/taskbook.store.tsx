@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import { taskBook } from "../tasks-file";
 import { Book } from "../components/AppTaskDetails/AppTaskDetails";
 class TaskBookStore {
@@ -16,6 +16,19 @@ class TaskBookStore {
     this.messageBook?.push(`Книга ${newBook.title} добавлена`);
   };
 
+  changeTaskCompletion = (
+    id: number | string,
+    index: number,
+    value: boolean
+  ) => {
+    runInAction(() => {
+      const foundBook = this.taskBooks.find((book) => book.id === id);
+      if (foundBook) {
+        foundBook.tasks[index].complited = value;
+      }
+    });
+  };
+
   deleteBook = (id: number | string) => {
     const deletedBook = this.taskBooks.find((book: Book) => book.id === id);
     this.taskBooks = this.taskBooks.filter((book: Book) => book.id !== id);
@@ -26,6 +39,10 @@ class TaskBookStore {
   selectBook = (book: Book) => {
     this.selectedBook = book;
     console.log("Открыта книга:", book.title);
+  };
+
+  clearMessage = () => {
+    this.messageBook = [];
   };
 }
 
