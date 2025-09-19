@@ -1,10 +1,10 @@
 import { makeAutoObservable } from "mobx";
 import { taskBook } from "../tasks-file";
 import { Book } from "../components/AppTaskDetails/AppTaskDetails";
-import { useState } from "react";
 class TaskBookStore {
   taskBooks: Book[] = [];
   selectedBook: Book | null = null;
+  messageBook: String[] = [];
 
   constructor() {
     makeAutoObservable(this);
@@ -13,13 +13,14 @@ class TaskBookStore {
 
   addBook = (newBook: Book) => {
     this.taskBooks.push(newBook);
-    console.log("Добавлена новая книга:", newBook.title);
+    this.messageBook?.push(`Книга ${newBook.title} добавлена`);
   };
 
   deleteBook = (id: number | string) => {
+    const deletedBook = this.taskBooks.find((book: Book) => book.id === id);
     this.taskBooks = this.taskBooks.filter((book: Book) => book.id !== id);
-    console.log("Удаление книги с №:", id);
     this.selectedBook = null;
+    this.messageBook?.push(`Книга ${deletedBook?.title} удалена`);
   };
 
   selectBook = (book: Book) => {

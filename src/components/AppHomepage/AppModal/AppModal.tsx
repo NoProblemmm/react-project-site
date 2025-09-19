@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import { CloseOutlined } from "@ant-design/icons";
-import { Button, Card, Form, Input, Space, Alert } from "antd";
+import { Button, Card, Form, Input, Space, Alert, message } from "antd";
 import { Book } from "../../AppTaskDetails/AppTaskDetails";
 import { taskBookStore } from "../../../store/taskbook.store";
 import { useTranslation } from "react-i18next";
@@ -33,6 +33,7 @@ export const AppModal = memo(({ handleCloseModal }: Props) => {
 
       count = 1;
       handleCloseModal();
+      message.info(`The book was created successfully!`);
     }
   }
 
