@@ -5,6 +5,7 @@ import "./theme/typeTheme/theme.css";
 import { i18n } from "@lingui/core";
 import { messages as ruMassages } from "./locales/ru/messages";
 import { messages as enMassages } from "./locales/en/messages";
+import { useConnectSocket } from "./api/hooks/useConnectSocket";
 
 const router = createRouter({ routeTree });
 declare module "@tanstack/react-router" {
@@ -15,6 +16,9 @@ declare module "@tanstack/react-router" {
 
 function App() {
   // Использование lingui
+
+  useConnectSocket();
+
   useEffect(() => {
     const saveLocal = localStorage.getItem("language") || "en";
     if (saveLocal === "ru") {
