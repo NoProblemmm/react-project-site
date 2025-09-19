@@ -19,6 +19,9 @@ html[data-theme="dark"] {
   --icon-book-color: #838383;
   --text-color: #fff;
 
+  --header-bell-color: invert(100%) sepia(0%) saturate(0%) hue-rotate(79deg)
+    brightness(108%) contrast(101%);
+
   --sider-bg-color: #040029;
   --sider-card-bg-color: #00013f;
 
@@ -43,6 +46,9 @@ html[data-theme="light"] {
   --background-color: #b9b9b9;
   --icon-book-color: #000000;
   --text-color: #000000;
+
+  --header-bell-color: invert(0%) sepia(0%) saturate(7468%) hue-rotate(158deg)
+    brightness(103%) contrast(100%);
 
   --sider-bg-color: #8d8d8d;
   --sider-card-bg-color: #adadad;
@@ -71,6 +77,7 @@ html[data-theme="light"] {
   @media (width< 640px) {
     display: flex;
     line-height: 0px;
+    flex-direction: column;
   }
 }
 
@@ -154,6 +161,10 @@ html[data-theme="light"] {
   transition: background-color 200ms linear;
 }
 
+.header-img-bell {
+  filter: var(--header-bell-color);
+  transition: filter 200ms linear;
+}
 :where(.css-dev-only-do-not-override-kbg4zp).ant-alert-info .ant-alert-icon {
   color: #0c00b9 !important;
 }
