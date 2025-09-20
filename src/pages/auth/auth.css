@@ -1,0 +1,6 @@
+.book-form-container {
+  background-image: url("/static/book.svg");
+  background-size: 80rem;
+  background-position-y: -10rem;
+  background-repeat: no-repeat;
+}
