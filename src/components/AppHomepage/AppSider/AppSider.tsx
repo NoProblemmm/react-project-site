@@ -5,7 +5,7 @@ import { taskBookStore } from "../../../store/taskbook.store";
 import { observer } from "mobx-react-lite";
 import { useTheme } from "../../../theme/SwitchTheme";
 import { useTranslation } from "react-i18next";
-import { SearchInput } from "../../ui/SearchInput/SearchInput";
+import { SearchInput } from "../../ui/searchInput/SearchInput";
 const { Sider } = Layout;
 
 export const AppSider = observer(() => {

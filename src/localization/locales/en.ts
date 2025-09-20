@@ -16,7 +16,7 @@ export const enLocale = {
     PageContentTableFinishTask: "Finish the Book",
 
     PageCardButtonLook: "Look",
-    PageCardButtonDelite: "Delite",
+    PageCardButtonDelite: "Delete",
 
     ModalTitle: "Add TaskBook",
     ModalSubTitle: "Book",

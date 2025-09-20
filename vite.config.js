@@ -6,16 +6,16 @@ import { tanstackRouter } from "@tanstack/router-plugin/vite";
 
 export default defineConfig({
   plugins: [
+    tanstackRouter({
+      target: "react",
+      autoCodeSplitting: true,
+    }),
     react({
       babel: {
         plugins: ["@lingui/babel-plugin-lingui-macro"],
       },
     }),
     tailwindcss(),
-    tanstackRouter({
-      target: "react",
-      autoCodeSplitting: true,
-    }),
   ],
   resolve: {
     alias: {
