@@ -5,6 +5,7 @@
   "type": "module",
   "dependencies": {
     "@ant-design/v5-patch-for-react-19": "^1.0.3",
+    "@force-dev/react": "^1.1.26",
     "@lingui/core": "^5.5.0",
     "@lingui/react": "^5.5.0",
     "@tanstack/react-router": "^1.131.35",
