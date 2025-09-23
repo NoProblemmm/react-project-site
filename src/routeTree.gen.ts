@@ -11,20 +11,16 @@
 import { createRootRoute } from '@tanstack/react-router'
 
 import { Route as TodosRouteImport } from './routes/todos'
-import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthSignUpRouteImport } from './routes/auth/signUp'
+import { Route as AuthSignInRouteImport } from './routes/auth/signIn'
 
 const rootRouteImport = createRootRoute()
 
 const TodosRoute = TodosRouteImport.update({
   id: '/todos',
   path: '/todos',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthRoute = AuthRouteImport.update({
-  id: '/auth',
-  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -37,39 +33,53 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthSignUpRoute = AuthSignUpRouteImport.update({
+  id: '/auth/signUp',
+  path: '/auth/signUp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthSignInRoute = AuthSignInRouteImport.update({
+  id: '/auth/signIn',
+  path: '/auth/signIn',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/auth': typeof AuthRoute
   '/todos': typeof TodosRoute
+  '/auth/signIn': typeof AuthSignInRoute
+  '/auth/signUp': typeof AuthSignUpRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/auth': typeof AuthRoute
   '/todos': typeof TodosRoute
+  '/auth/signIn': typeof AuthSignInRoute
+  '/auth/signUp': typeof AuthSignUpRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/auth': typeof AuthRoute
   '/todos': typeof TodosRoute
+  '/auth/signIn': typeof AuthSignInRoute
+  '/auth/signUp': typeof AuthSignUpRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/auth' | '/todos'
+  fullPaths: '/' | '/about' | '/todos' | '/auth/signIn' | '/auth/signUp'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/auth' | '/todos'
-  id: '__root__' | '/' | '/about' | '/auth' | '/todos'
+  to: '/' | '/about' | '/todos' | '/auth/signIn' | '/auth/signUp'
+  id: '__root__' | '/' | '/about' | '/todos' | '/auth/signIn' | '/auth/signUp'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  AuthRoute: typeof AuthRoute
   TodosRoute: typeof TodosRoute
+  AuthSignInRoute: typeof AuthSignInRoute
+  AuthSignUpRoute: typeof AuthSignUpRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -79,13 +89,6 @@ declare module '@tanstack/react-router' {
       path: '/todos'
       fullPath: '/todos'
       preLoaderRoute: typeof TodosRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth': {
-      id: '/auth'
-      path: '/auth'
-      fullPath: '/auth'
-      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -102,14 +105,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth/signUp': {
+      id: '/auth/signUp'
+      path: '/auth/signUp'
+      fullPath: '/auth/signUp'
+      preLoaderRoute: typeof AuthSignUpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/signIn': {
+      id: '/auth/signIn'
+      path: '/auth/signIn'
+      fullPath: '/auth/signIn'
+      preLoaderRoute: typeof AuthSignInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  AuthRoute: AuthRoute,
   TodosRoute: TodosRoute,
+  AuthSignInRoute: AuthSignInRoute,
+  AuthSignUpRoute: AuthSignUpRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
