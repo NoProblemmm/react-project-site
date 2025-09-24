@@ -1,18 +1,16 @@
-import React, { memo, useState, useCallback, useEffect } from "react";
+import React, { memo } from "react";
 import { Button, Layout, Modal, Drawer } from "antd";
 import { AppModal } from "../AppModal/AppModal";
 import "@ant-design/v5-patch-for-react-19";
 import { AppNotes } from "../AppNotes/AppNotes";
 import { Link } from "@tanstack/react-router";
-import { useTheme } from "../../../theme/SwitchTheme";
-import LanguageSwitcher from "../../../localization/hooks/LanguageSwitcher";
-import { useTranslation } from "react-i18next";
 import { Trans } from "@lingui/react/macro";
 import { AppLocales } from "../../../locales/hooks/AppLocales";
 import "./AppHeader.css";
 import { MessageModal } from "./ui/MessageMenu";
-import { taskBookStore } from "../../../store/taskbook.store";
 import { observer } from "mobx-react-lite";
+import { useHeaderLogic } from "./hooks/useHeaderLogic";
+import { t } from "@lingui/core/macro";
 
 const { Header } = Layout;
 
@@ -22,48 +20,20 @@ type Props = {
 
 export const AppHeader = memo(
   observer(({ showButtons }: Props) => {
-    const { t } = useTranslation();
-    const [modal, setModal] = useState(false);
-    const [messageModal, setMessageModal] = useState(false);
-    const [drawer, setDrawer] = useState(false);
-    const { theme, switchTheme } = useTheme();
-
-    const [sizeWindow, setSizeWindow] = useState(window.innerWidth < 640);
-    const [menuOpen, setMenuOpen] = useState(false);
-
-    const { messageBook } = taskBookStore;
-
-    useEffect(() => {
-      const handleResize = () => {
-        const isSizeWindow = window.innerWidth < 640;
-        setSizeWindow(isSizeWindow);
-        if (!isSizeWindow) {
-          setSizeWindow(false);
-        }
-      };
-      window.addEventListener("resize", handleResize);
-      handleResize();
-      return () => window.removeEventListener("resize", handleResize);
-    }, []);
-
-    const handleModal = useCallback(() => setModal((prev) => !prev), []);
-    const handleDrawer = useCallback(() => setDrawer((prev) => !prev), []);
-
-    const handleMessageModal = () => {
-      setMessageModal((prev) => !prev);
-      if (messageModal) {
-        taskBookStore.clearMessage();
-      }
-    };
-
-    const logout = () => {
-      console.log("EXIT");
-    };
-
-    const toggleMenu = () => {
-      setMenuOpen((prev) => !prev);
-    };
-    //{t("navigation.PageAddTask")}
+    const {
+      toggleMenu,
+      toggleModal,
+      toggleDrawer,
+      toggleMessageModal,
+      switchTheme,
+      modal,
+      messageModal,
+      drawer,
+      sizeWindow,
+      menuOpen,
+      theme,
+      messageBook,
+    } = useHeaderLogic();
     return (
       <>
         <Header className="header-custom text-center flex-col ">
@@ -75,48 +45,44 @@ export const AppHeader = memo(
           {!sizeWindow || menuOpen ? (
             <>
               {showButtons && (
-                <Button onClick={handleModal} className="sm:m-1">
+                <Button onClick={toggleModal} className="sm:m-1">
                   <Trans>New Task</Trans>
                 </Button>
               )}
 
               <Link to="/">
                 <Button type="dashed" className="w-full sm:w-auto">
-                  {t("navigation.PageTaskPage")}
+                  <Trans>Task</Trans>
                 </Button>
               </Link>
               <Link to="/about">
                 <Button type="dashed" className="w-full sm:w-auto sm:m-1">
-                  {" "}
-                  {t("navigation.PageAboutPage")}
+                  <Trans>About</Trans>
                 </Button>
               </Link>
 
               <Link to="/todos">
                 <Button type="dashed" className="w-full sm:w-auto">
-                  {t("navigation.PageTodoPage")}
+                  <Trans>Todo</Trans>
                 </Button>
               </Link>
 
               {showButtons && (
                 <Button
                   className="w-full sm:w-auto sm:m-1"
-                  onClick={handleDrawer}
+                  onClick={toggleDrawer}
                 >
-                  {t("navigation.PageNotes")}
+                  <Trans>Notes</Trans>
                 </Button>
               )}
               <AppLocales />
-              <LanguageSwitcher />
               <Button type="dashed" className="sm:m-1" onClick={switchTheme}>
-                {theme === "dark"
-                  ? t("navigation.PageTheme.light")
-                  : t("navigation.PageTheme.dark")}
+                {theme === "dark" ? <Trans>Light</Trans> : <Trans>Dark</Trans>}
               </Button>
               <div className="relative flex items-center float-right gap-5 text-black">
                 <button
                   className="massage-bell relative flex items-center float-right mt-[1.3rem]"
-                  onClick={handleMessageModal}
+                  onClick={toggleMessageModal}
                 >
                   <div
                     className="absolute top-[-6px] right-[5px] bg-red-600 rounded-full flex items-center justify-center
@@ -131,34 +97,33 @@ export const AppHeader = memo(
                 </button>
                 {messageModal && <MessageModal />}
                 <div className="h-9 bg-stone-400 w-[0.1px] rounded-2xl mt-4"></div>
-                <button
-                  className="massage-bell relative flex items-center float-right mt-[1.3rem]"
-                  onClick={logout}
-                >
-                  <img
-                    src="/static/exit.svg"
-                    className="w-8 header-img-bell "
-                  />
-                </button>
+                <Link to="/auth/signIn">
+                  <button className="massage-bell relative flex items-center float-right mt-[1.3rem]">
+                    <img
+                      src="/static/exit.svg"
+                      className="w-8 header-img-bell "
+                    />
+                  </button>
+                </Link>
               </div>
               <Drawer
                 width={600}
                 destroyOnHidden
-                title={t("navigation.NotesDrawerTitle")}
+                title={t`Notes`}
                 className="ant-modal-content"
-                onClose={handleDrawer}
+                onClose={toggleDrawer}
                 open={drawer}
               >
                 <AppNotes />
               </Drawer>
               <Modal
-                title={t("navigation.ModalTitle")}
+                title={t`Add TaskBook`}
                 open={modal}
                 footer={null}
-                onCancel={handleModal}
-                className="ant-modal-title "
+                onCancel={toggleModal}
+                className="ant-modal "
               >
-                {showButtons && <AppModal handleCloseModal={handleModal} />}
+                {showButtons && <AppModal handleCloseModal={toggleModal} />}
               </Modal>
             </>
           ) : null}

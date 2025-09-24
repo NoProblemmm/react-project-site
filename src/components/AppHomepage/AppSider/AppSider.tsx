@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import { Divider, Layout } from "antd";
+import { Layout } from "antd";
 import { Card, Button } from "antd";
 import { taskBookStore } from "../../../store/taskbook.store";
 import { observer } from "mobx-react-lite";
 import { useTheme } from "../../../theme/SwitchTheme";
-import { useTranslation } from "react-i18next";
 import { SearchInput } from "../../ui/searchInput/SearchInput";
+import { Trans } from "@lingui/react/macro";
 const { Sider } = Layout;
 
 export const AppSider = observer(() => {
-  const { t } = useTranslation();
   const { deleteBook, taskBooks, selectBook } = taskBookStore;
   const { theme } = useTheme();
 
@@ -55,7 +54,7 @@ export const AppSider = observer(() => {
                 variant="outlined"
                 onClick={() => selectBook(book)}
               >
-                {t("navigation.PageCardButtonLook")}
+                <Trans>Look</Trans>
               </Button>
               <Button
                 className="mr-[1px] float-right"
@@ -63,7 +62,7 @@ export const AppSider = observer(() => {
                 variant="outlined"
                 onClick={() => deleteBook(book.id)}
               >
-                {t("navigation.PageCardButtonDelite")}
+                <Trans>Delete</Trans>
               </Button>
             </div>
           </Card>

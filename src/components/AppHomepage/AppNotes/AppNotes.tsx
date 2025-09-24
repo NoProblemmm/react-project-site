@@ -3,11 +3,10 @@ import { Form, Input, Button, Divider, List, Typography, Alert } from "antd";
 import { Note } from "../../AppTaskDetails/AppTaskDetails";
 import { noteBookStore } from "../../../store/notes.store";
 import { observer } from "mobx-react-lite";
-import { useTranslation } from "react-i18next";
+import { Trans } from "@lingui/react/macro";
+import { t } from "@lingui/core/macro";
 
 export const AppNotes = observer(() => {
-  const { t } = useTranslation();
-
   const [form] = Form.useForm();
   const { noteBook, addNotes, deleteNotes } = noteBookStore;
   let nextId = noteBook.length + 1;
@@ -39,7 +38,7 @@ export const AppNotes = observer(() => {
         onFinish={addNewNote}
       >
         <Alert
-          message={t("navigation.NotesDrawerHint") + " ..."}
+          message={t`Please add the name Note` + " ..."}
           type="info"
           showIcon
           style={{ marginBottom: "1rem" }}
@@ -50,7 +49,7 @@ export const AppNotes = observer(() => {
           rules={[
             {
               required: true,
-              message: t("navigation.NotesDrawerHint") + "!",
+              message: t`Please add the name Note` + "!",
             },
           ]}
         >
@@ -59,17 +58,17 @@ export const AppNotes = observer(() => {
 
         <Form.Item label=" ">
           <Button type="primary" htmlType="submit">
-            {t("navigation.NotesDrawerButtonAddNote")}
+            <Trans>Add Note</Trans>
           </Button>
         </Form.Item>
       </Form>
       <Divider orientation="left" className="ant-modal-content">
-        {t("navigation.NotesDrawerDividerTitle")}
+        <Trans>Notes</Trans>
       </Divider>
 
       <List
         style={{ borderColor: "#000", color: "#000" }}
-        header={<div>{t("navigation.NotesDrawerInpTitle") + ":"}</div>}
+        header={<div>{t`Note` + ":"}</div>}
         footer={"..."}
         className="ant-modal-content"
         dataSource={noteBook}
@@ -91,7 +90,7 @@ export const AppNotes = observer(() => {
                   style={{ flex: "right" }}
                   onClick={() => deleteNotes(note.id)}
                 >
-                  {t("navigation.NotesDrawerButtonDelite")}
+                  <Trans>DEL</Trans>
                 </Button>
               </div>
             </div>

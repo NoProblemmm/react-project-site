@@ -1,9 +1,10 @@
-import React, { memo } from "react";
+import React from "react";
 import { Layout, Button } from "antd";
-import { Divider, List, Typography, Checkbox, Progress } from "antd";
+import { Divider, List, Checkbox, Progress } from "antd";
 import { taskBookStore } from "../../../store/taskbook.store";
 import { observer } from "mobx-react-lite";
-import { useTranslation } from "react-i18next";
+import { Trans } from "@lingui/react/macro";
+import { t } from "@lingui/core/macro";
 
 const { Content } = Layout;
 
@@ -15,7 +16,6 @@ const contentStyle: React.CSSProperties = {
 
 export const AppContent = observer(() => {
   const { deleteBook, selectedBook } = taskBookStore;
-  const { t } = useTranslation();
 
   if (!selectedBook || selectedBook == null) {
     return (
@@ -31,7 +31,7 @@ export const AppContent = observer(() => {
             borderColor: "var(--text-color)",
           }}
         >
-          {t("navigation.PageContentDivider")}
+          <Trans>Look Book</Trans>
         </Divider>
       </div>
     );
@@ -68,7 +68,7 @@ export const AppContent = observer(() => {
                 color: "var(--text-color)",
                 borderColor: "var(--text-color)",
               }}
-              header={t("navigation.PageContentTableTitile") + ":"}
+              header={t`Tasks` + ":"}
               footer={
                 <>
                   <Progress
@@ -84,7 +84,7 @@ export const AppContent = observer(() => {
                         className="mb-[1rem]"
                         onClick={() => deleteBook(selectedBook.id)}
                       >
-                        {t("navigation.PageContentTableFinishTask")}
+                        <Trans>Finish the Book</Trans>
                       </Button>
                     )}
                   </div>

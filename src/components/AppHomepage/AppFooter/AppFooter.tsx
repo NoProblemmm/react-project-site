@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Layout, Typography } from "antd";
-import { useTheme } from "../../../theme/SwitchTheme";
 const { Footer } = Layout;
 
 export function AppFooter() {
-  const { theme } = useTheme();
   let [timer, setTimer] = useState(new Date());
   useEffect(() => {
     const intervalId = setInterval(() => {

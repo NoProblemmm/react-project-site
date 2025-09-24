@@ -3,9 +3,10 @@ import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
 import "./theme/typeTheme/theme.css";
 import { i18n } from "@lingui/core";
-import { messages as ruMassages } from "./locales/ru/messages";
-import { messages as enMassages } from "./locales/en/messages";
+import { messages as ruMessages } from "./locales/ru/messages";
+import { messages as enMessages } from "./locales/en/messages";
 import { useConnectSocket } from "./api/hooks/useConnectSocket";
+import { I18nProvider } from "@lingui/react";
 
 const router = createRouter({ routeTree });
 declare module "@tanstack/react-router" {
@@ -21,19 +22,21 @@ function App() {
   useEffect(() => {
     const saveLocal = localStorage.getItem("language") || "en";
     if (saveLocal === "ru") {
-      i18n.load("ru", ruMassages);
+      i18n.load("ru", ruMessages);
       i18n.activate("ru");
     } else {
-      i18n.load("en", enMassages);
+      i18n.load("en", enMessages);
       i18n.activate("en");
     }
   });
   return (
     <>
-      {/* // <ThemeProvider> */}
-      <RouterProvider router={router} />
+      <I18nProvider i18n={i18n}>
+        {/* // <ThemeProvider> */}
+        <RouterProvider router={router} />
 
-      {/* // </ThemeProvider> */}
+        {/* // </ThemeProvider> */}
+      </I18nProvider>
     </>
   );
 }
