@@ -137,12 +137,15 @@ html[data-theme="light"] {
   transition: scrollbar-color 200ms linear;
 }
 
-.ant-modal-content,
-.ant-modal-title {
+.ant-modal-content {
   background-color: var(--modal-bg-color) !important;
   color: var(--text-color) !important;
   border-color: var(--text-color) !important;
   border-radius: 10px;
+}
+.ant-modal-title {
+  background-color: var(--modal-bg-color) !important;
+  color: var(--text-color) !important;
 }
 
 .ant-form-item-required {
