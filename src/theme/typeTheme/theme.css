@@ -30,7 +30,17 @@ html[data-theme="dark"] {
 
   --modal-bg-color: #120055;
 
-  --layput-container-color: #11111180;
+  /* Цвета Градиента фона сайта для темной темы */
+  --color1: hsl(303, 100%, 10%);
+  --color2: hsl(289, 100%, 21%);
+  --color3: hsl(315, 100%, 27%);
+  --color4: hsl(329, 100%, 36%);
+  --color5: hsl(337, 100%, 43%);
+  --color6: hsl(303, 100%, 30%);
+  --color7: hsl(283, 100%, 32%);
+  --color8: hsl(286, 100%, 27%);
+  --color9: hsl(293, 100%, 18%);
+  --color10: hsl(300, 100%, 12%);
 }
 
 html[data-theme="light"] {
@@ -58,7 +68,55 @@ html[data-theme="light"] {
 
   --modal-bg-color: #ffffff;
 
-  --layput-container-color: #85858533;
+  /* Цвета Градиента фона сайта для темной темы */
+  --color1: hsl(24, 100%, 13%);
+  --color2: hsl(19, 100%, 30%);
+  --color3: hsl(135, 100%, 38%);
+  --color4: hsl(140, 100%, 41%);
+  --color5: hsl(160, 100%, 39%);
+  --color6: hsl(177, 100%, 34%);
+  --color7: hsl(189, 100%, 37%);
+  --color8: hsl(229, 100%, 35%);
+  --color9: hsl(251, 100%, 18%);
+  --color10: hsl(276, 100%, 12%);
+}
+
+.layout-container {
+  /* Управление анимацией фона  */
+  animation-name: gradientAnimation;
+  animation-duration: 50s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  background-size: 400%;
+  background-position: 0% center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--color1) 0%,
+    var(--color2) 21%,
+    var(--color3) 38%,
+    var(--color4) 39%,
+    var(--color5) 46%,
+    var(--color6) 54%,
+    var(--color7) 61%,
+    var(--color8) 69%,
+    var(--color9) 79%,
+    var(--color10) 100%
+  );
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+  100% {
+    background-position: 0% center;
+  }
 }
 
 .ant-layout {
@@ -74,7 +132,7 @@ html[data-theme="light"] {
   transition:
     background-color 500ms linear,
     color 900ms linear;
-  @media (width< 640px) {
+  @media (max-width: 640px) {
     display: flex;
     line-height: 0px;
     flex-direction: column;
@@ -92,10 +150,10 @@ html[data-theme="light"] {
 .card-custom {
   background-color: var(--sider-card-bg-color);
   border-color: var(--text-color);
-
   margin-top: 5px;
   transition: background-color 500ms linear;
 }
+
 .ant-card-head-title {
   color: var(--text-color);
   transition: color 900ms linear;
@@ -108,6 +166,7 @@ html[data-theme="light"] {
     background-color 500ms linear,
     color 900ms linear;
 }
+
 .content-abpa-point {
   background-color: var(--sider-bg-color);
   color: var(--text-color) !important;
@@ -132,6 +191,7 @@ html[data-theme="light"] {
   scrollbar-color: var(--text-color) var(--sider-bg-color);
   transition: scrollbar-color 200ms linear;
 }
+
 .scrollbar-sider-content {
   scrollbar-color: var(--text-color) var(--content-sider-color);
   transition: scrollbar-color 200ms linear;
@@ -143,6 +203,7 @@ html[data-theme="light"] {
   border-color: var(--text-color) !important;
   border-radius: 10px;
 }
+
 .ant-modal-title {
   background-color: var(--modal-bg-color) !important;
   color: var(--text-color) !important;
@@ -151,6 +212,7 @@ html[data-theme="light"] {
 .ant-form-item-required {
   color: var(--text-color) !important;
 }
+
 .custom-label .ant-form-item-label > label {
   color: var(--text-color);
 }
@@ -159,15 +221,11 @@ html[data-theme="light"] {
   color: var(--text-color) !important;
 }
 
-.layout-container {
-  background-color: var(--layput-container-color) !important;
-  transition: background-color 200ms linear;
-}
-
 .header-img-bell {
   filter: var(--header-bell-color);
   transition: filter 200ms linear;
 }
+
 :where(.css-dev-only-do-not-override-kbg4zp).ant-alert-info .ant-alert-icon {
   color: #0c00b9 !important;
 }
@@ -178,15 +236,16 @@ html[data-theme="light"] {
 
 :where(.css-dev-only-do-not-override-xepvsj).ant-card .ant-card-body {
   padding-right: 10px;
-  @media (width< 640px) {
+  @media (max-width: 640px) {
     padding-right: 2px;
     .btn-look {
       width: 84px;
     }
   }
 }
+
 :where(.css-dev-only-do-not-override-xepvsj).ant-card .ant-card-head {
-  @media (width< 640px) {
+  @media (max-width: 640px) {
     padding-right: 5px;
     padding-left: 15px;
   }
