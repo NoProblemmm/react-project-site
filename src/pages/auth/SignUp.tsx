@@ -1,19 +1,16 @@
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import "./auth.css";
-import { z } from "zod";
 import { Input } from "../../components/ui/input/Inpit";
 import { Typography } from "antd";
 import { Button } from "../../components/ui/button/Button";
 import { signUpFormValidation } from "./validations";
 import { TSignUpSchema } from "./validations";
 import { observer } from "mobx-react-lite";
+import { useSignUpN } from "./hooks/useSignUpN";
 
 export const SignUp = observer(() => {
-  const onSubmit = async (data: TSignUpSchema) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log("Форма отправлена");
-  };
+  const { handleNavigateSignInForm, onSubmit } = useSignUpN();
 
   const {
     control,
@@ -29,7 +26,7 @@ export const SignUp = observer(() => {
     <div className="w-full h-screen flex items-center justify-center">
       <div className="book-form-container  w-[70%] h-[55rem] mt-5 ">
         <div className="flex">
-          <div className="w-[29%] h-136 ml-[13rem] mt-[10rem] ">
+          <div className="w-[29%] h-136 xl:ml-[13rem] mt-[10rem] ">
             <Typography className="justify-items-center mt-20">
               <h2>Регистрация</h2>
             </Typography>
@@ -75,9 +72,22 @@ export const SignUp = observer(() => {
               >
                 Регистрация
               </Button>
+              <Button
+                type="link"
+                className=" w-full "
+                onClick={handleNavigateSignInForm}
+              >
+                Войти
+              </Button>
             </form>
           </div>
-          <div className="w-[27%] h-136 bg-amber-800 ml-[10rem] mt-[10rem]"></div>
+          <div className="w-[27%] h-136  ml-[9rem]  mt-[10rem]">
+            <li>
+              TaskBook - инструмент для управления проектами и задачами.
+              Обеспечивает единое пространство для общения и эффективной
+              организации задач.
+            </li>
+          </div>
         </div>
       </div>
     </div>
