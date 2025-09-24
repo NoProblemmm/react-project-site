@@ -19,3 +19,4 @@ export const signUpFormValidation = z
   });
 
 export type TSignUpSchema = z.infer<typeof signUpFormValidation>;
+export type TSignInSchema = z.infer<typeof signInFormValidation>;
