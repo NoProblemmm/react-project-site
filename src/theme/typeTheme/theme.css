@@ -30,6 +30,8 @@ html[data-theme="dark"] {
 
   --modal-bg-color: #120055;
 
+  --scroll-color: #ffffff;
+
   /* Цвета Градиента фона сайта для темной темы */
   --color1: hsl(303, 100%, 10%);
   --color2: hsl(289, 100%, 21%);
@@ -67,6 +69,8 @@ html[data-theme="light"] {
   --content-sider-color: #a5a5a5;
 
   --modal-bg-color: #ffffff;
+
+  --scroll-color: #3f3f3f;
 
   /* Цвета Градиента фона сайта для темной темы */
   --color1: hsl(24, 100%, 13%);
@@ -249,4 +253,8 @@ html[data-theme="light"] {
     padding-right: 5px;
     padding-left: 15px;
   }
+}
+
+:where(.css-dev-only-do-not-override-xepvsj).ant-layout.ant-layout-has-sider {
+  scrollbar-color: var(--scroll-color) var(--content-sider-color);
 }
