@@ -14,6 +14,8 @@ declare module "@tanstack/react-router" {
     router: typeof router;
   }
 }
+i18n.load("en", enMessages);
+i18n.activate("en");
 
 function App() {
   useConnectSocket();
@@ -29,6 +31,7 @@ function App() {
       i18n.activate("en");
     }
   });
+
   return (
     <>
       <I18nProvider i18n={i18n}>

@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import "/src/theme/typeTheme/theme.css";
 import App from "./App";
-import "./localization/localization";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
