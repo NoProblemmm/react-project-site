@@ -5,7 +5,7 @@ import { i18n } from "@lingui/core";
 import { Button } from "antd";
 
 // Добавление локализации с помощью lingui
-export function AppLocales() {
+export function AppLocales({ ...props }) {
   const [language, setLanguage] = useState(() => {
     const storedLang = localStorage.getItem("language");
     return storedLang || "en";
@@ -33,13 +33,19 @@ export function AppLocales() {
   return (
     <>
       {language === "en" ? (
-        <Button className="" onClick={() => changeLanguage("ru")}>
-          RU{" "}
-        </Button>
+        <button
+          className="message-bell  relative flex items-center float-right mt-[1.3rem]"
+          onClick={() => changeLanguage("ru")}
+        >
+          <p className="header-img flex items-center text-2xl mt-[-4px]">RU</p>
+        </button>
       ) : (
-        <Button className="" onClick={() => changeLanguage("en")}>
-          EN{" "}
-        </Button>
+        <button
+          className="message-bell  relative flex items-center float-right mt-[1.3rem]"
+          onClick={() => changeLanguage("en")}
+        >
+          <p className="header-img flex items-center text-2xl mt-[-4px]">EN</p>
+        </button>
       )}
     </>
   );

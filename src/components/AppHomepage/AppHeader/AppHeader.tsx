@@ -75,13 +75,27 @@ export const AppHeader = memo(
                   <Trans>Notes</Trans>
                 </Button>
               )}
-              <AppLocales />
-              <Button type="dashed" className="sm:m-1" onClick={switchTheme}>
-                {theme === "dark" ? <Trans>Light</Trans> : <Trans>Dark</Trans>}
-              </Button>
-              <div className="relative flex items-center float-right gap-5 text-black">
+
+              <div className="relative flex items-center float-left gap-5 text-black">
                 <button
-                  className="massage-bell relative flex items-center float-right mt-[1.3rem]"
+                  onClick={switchTheme}
+                  className="message-bell relative flex items-center float-right mt-[1rem]"
+                >
+                  <img
+                    className="w-9 header-img"
+                    src={
+                      theme === "dark"
+                        ? "/static/light-theme.svg"
+                        : "/static/dark-theme.svg"
+                    }
+                  />
+                </button>
+              </div>
+              <div className="relative flex items-center float-right gap-5 text-black">
+                <AppLocales />
+
+                <button
+                  className="message-bell relative flex items-center float-right mt-[1.3rem]"
                   onClick={toggleMessageModal}
                 >
                   <div
@@ -90,19 +104,13 @@ export const AppHeader = memo(
                   >
                     {messageBook?.length === 0 ? "" : messageBook.length}
                   </div>
-                  <img
-                    src="/static/bell.svg"
-                    className="w-6 header-img-bell "
-                  />
+                  <img src="/static/bell.svg" className="w-6 header-img " />
                 </button>
                 {messageModal && <MessageModal />}
                 <div className="h-9 bg-stone-400 w-[0.1px] rounded-2xl mt-4"></div>
                 <Link to="/auth/signIn">
-                  <button className="massage-bell relative flex items-center float-right mt-[1.3rem]">
-                    <img
-                      src="/static/exit.svg"
-                      className="w-8 header-img-bell "
-                    />
+                  <button className="message-bell relative flex items-center float-right mt-[1.3rem]">
+                    <img src="/static/exit.svg" className="w-8 header-img " />
                   </button>
                 </Link>
               </div>
