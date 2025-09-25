@@ -87,7 +87,7 @@ export const AppModal = memo(({ handleCloseModal }: Props) => {
                 </Form.Item>
 
                 <Form.Item
-                  label={<Trans>Book</Trans>}
+                  label={<Trans>Task</Trans>}
                   className="ant-form-item-required custom-label"
                 >
                   <Form.List name={[field.name, "tasks"]}>
