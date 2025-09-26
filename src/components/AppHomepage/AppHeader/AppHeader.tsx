@@ -100,7 +100,7 @@ export const AppHeader = memo(
                 >
                   <div
                     className="absolute top-[-6px] right-[5px] bg-red-600 rounded-full flex items-center justify-center
-               text-white text-xs font-bold px-1 min-w-[20px] max-w-[50px] overflow-hidden whitespace-nowrap z-10"
+               text-white text-xs font-bold px-1 min-w-[20px] max-w-[50px] overflow-hidden whitespace-nowrap z-10 "
                   >
                     {messageBook?.length === 0 ? "" : messageBook.length}
                   </div>

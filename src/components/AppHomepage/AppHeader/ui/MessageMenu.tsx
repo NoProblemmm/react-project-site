@@ -1,11 +1,12 @@
 import React from "react";
 import { taskBookStore } from "../../../../store/taskbook.store";
+import "./MessageMenuStyle.css";
 
 export function MessageModal() {
   const { messageBook } = taskBookStore;
   return (
     <div
-      className=""
+      className="h-[12rem] "
       style={{
         position: "absolute",
         top: "100%",
@@ -15,7 +16,9 @@ export function MessageModal() {
         background: "white",
         border: "1px solid #a5a5a5",
         borderRadius: "4px",
-        overflow: "hidden",
+        overflowX: "hidden",
+        overflowY: "scroll",
+        WebkitOverflowScrolling: "touch",
         transform: "translateY(-10px)",
         animation: "slideDown 0.8s forwards",
         zIndex: 2,
@@ -34,7 +37,7 @@ export function MessageModal() {
       ) : (
         messageBook.map((message, index) => (
           <div
-            className="border-1 min-h-7 border-black rounded-[5px]  m-1 max-w-xs break-words 
+            className=" border-1 min-h-7 border-black rounded-[5px]  m-1 max-w-xs break-words 
                   leading-[1.2] text-[1rem]"
             key={index}
           >
