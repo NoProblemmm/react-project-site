@@ -25,80 +25,62 @@ export const SignIn = () => {
     console.log("Забыл пароль");
   };
   return (
-    <div className="w-full h-screen flex items-center justify-center">
-      <div className="book-form-container  w-[70%] h-[55rem] mt-5 ">
-        <div className="flex">
-          <div className="w-[29%] h-136 xl:ml-[13rem] mt-[10rem] ">
-            <Typography className="justify-items-center mt-20">
-              <h2>Вход</h2>
-            </Typography>
-            <form
-              className="flex flex-col gap-y-2 m-5"
-              onSubmit={handleSubmit(onSubmit)}
+    <div className="justify-items-center mt-60  ">
+      <div className=" flex text-center m-2 p-9 rounded-2xl shadow-neutral-400 shadow-2xl">
+        <div className="flex flex-col gap-4">
+          <Typography>
+            <h2>Вход</h2>
+          </Typography>
+          <form
+            className="justify-items-start"
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <Controller
+              control={control}
+              name="email"
+              render={({ field }) => (
+                <Input {...field} type="text" placeholder="Login" />
+              )}
+            />
+            {errors.email && (
+              <p className="text-red-500 ">{errors.email.message}</p>
+            )}
+            <Controller
+              name="password"
+              control={control}
+              render={({ field }) => (
+                <Input.Password
+                  {...field}
+                  className="mt-3"
+                  type="text"
+                  placeholder="Password"
+                />
+              )}
+            />
+            {errors.password && (
+              <p className="text-red-500">{errors.password.message}</p>
+            )}
+            <a
+              className=" cursor-pointer text-blue-700 flex"
+              onClick={hendleChangePassword}
             >
-              <Controller
-                control={control}
-                name="email"
-                render={({ field }) => (
-                  <Input
-                    {...field}
-                    className=""
-                    type="text"
-                    placeholder="Login"
-                    name=""
-                    id=""
-                  />
-                )}
-              />
-              {errors.email && (
-                <p className="text-red-500">{errors.email.message}</p>
-              )}
-              <Controller
-                name="password"
-                control={control}
-                render={({ field }) => (
-                  <Input.Password
-                    {...field}
-                    className="mt-3"
-                    type="text"
-                    placeholder="Password"
-                    name=""
-                    id=""
-                  />
-                )}
-              />
-              {errors.password && (
-                <p className="text-red-500">{errors.password.message}</p>
-              )}
-              <a
-                className=" cursor-pointer text-blue-700 flex"
-                onClick={hendleChangePassword}
-              >
-                Забыли пароль?
-              </a>
-              <Button
-                className="mt-[1rem] w-full "
-                type="primary"
-                htmlType="submit"
-              >
-                Вход
-              </Button>
-              <Button
-                className=" w-full "
-                type="link"
-                onClick={handleNavigateSignUpForm}
-              >
-                Регистрация
-              </Button>
-            </form>
-          </div>
-          <div className="w-[27%] h-136  ml-[9rem]  mt-[10rem]">
-            <li>
-              TaskBook - инструмент для управления проектами и задачами.
-              Обеспечивает единое пространство для общения и эффективной
-              организации задач.
-            </li>
-          </div>
+              Забыли пароль?
+            </a>
+            <Button
+              className="mt-[1rem] w-full "
+              type="primary"
+              htmlType="submit"
+            >
+              Вход
+            </Button>
+            <Button
+              className=" w-full "
+              type="link"
+              onClick={handleNavigateSignUpForm}
+            >
+              Регистрация
+            </Button>
+          </form>
         </div>
       </div>
     </div>

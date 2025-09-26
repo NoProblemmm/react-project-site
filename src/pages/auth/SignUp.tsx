@@ -23,71 +23,70 @@ export const SignUp = observer(() => {
   });
 
   return (
-    <div className="w-full h-screen flex items-center justify-center">
-      <div className="book-form-container  w-[70%] h-[55rem] mt-5 ">
-        <div className="flex">
-          <div className="w-[29%] h-136 xl:ml-[13rem] mt-[10rem] ">
-            <Typography className="justify-items-center mt-20">
-              <h2>Регистрация</h2>
-            </Typography>
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="flex flex-col gap-y-2 m-5"
+    <div className="justify-items-center mt-60  ">
+      <div className=" flex text-center m-2 max-w-114 p-9 rounded-2xl shadow-neutral-400 shadow-2xl">
+        <div className="flex flex-col gap-4">
+          <Typography>
+            <h2>Регистрация</h2>
+          </Typography>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="justify-items-start"
+          >
+            <Controller
+              name="email"
+              control={control}
+              render={({ field }) => <Input {...field} placeholder="Email" />}
+            />
+            {errors.email && (
+              <p className="text-red-500">{errors.email.message}</p>
+            )}
+            <Controller
+              name="password"
+              control={control}
+              render={({ field }) => (
+                <Input.Password
+                  className="mt-3"
+                  placeholder="Password"
+                  {...field}
+                />
+              )}
+            />
+
+            {errors.password && (
+              <p className="text-red-500">{errors.password.message}</p>
+            )}
+
+            <Controller
+              name="confirmPassword"
+              control={control}
+              render={({ field }) => (
+                <Input.Password
+                  className="mt-3"
+                  placeholder="Confirm Password"
+                  {...field}
+                />
+              )}
+            />
+            {errors.confirmPassword && (
+              <p className="text-red-500">{errors.confirmPassword.message}</p>
+            )}
+
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="mt-[1rem] w-full "
             >
-              <Controller
-                name="email"
-                control={control}
-                render={({ field }) => <Input {...field} placeholder="Email" />}
-              />
-              {errors.email && (
-                <p className="text-red-500">{errors.email.message}</p>
-              )}
-              <Controller
-                name="password"
-                control={control}
-                render={({ field }) => (
-                  <Input.Password placeholder="Password" {...field} />
-                )}
-              />
-
-              {errors.password && (
-                <p className="text-red-500">{errors.password.message}</p>
-              )}
-
-              <Controller
-                name="confirmPassword"
-                control={control}
-                render={({ field }) => (
-                  <Input.Password placeholder="Confirm Password" {...field} />
-                )}
-              />
-              {errors.confirmPassword && (
-                <p className="text-red-500">{errors.confirmPassword.message}</p>
-              )}
-
-              <Button
-                type="primary"
-                htmlType="submit"
-                className="mt-[1rem] w-full "
-              >
-                Регистрация
-              </Button>
-              <Button
-                type="link"
-                className=" w-full "
-                onClick={handleNavigateSignInForm}
-              >
-                Войти
-              </Button>
-            </form>
-          </div>
-          <div className="w-[27%] h-136  ml-[9rem]  mt-[10rem]">
-            <li>
-              TaskBook - инструмент для управления проектами и задачами.
-              Обеспечивает единое пространство для общения и эффективной
-              организации задач.
-            </li>
-          </div>
+              Регистрация
+            </Button>
+            <Button
+              type="link"
+              className=" w-full "
+              onClick={handleNavigateSignInForm}
+            >
+              Войти
+            </Button>
+          </form>
         </div>
       </div>
     </div>

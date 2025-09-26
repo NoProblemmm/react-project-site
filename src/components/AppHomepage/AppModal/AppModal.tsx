@@ -67,7 +67,11 @@ export const AppModal = memo(({ handleCloseModal }: Props) => {
                 className="ant-modal-content"
               >
                 <Alert
-                  message={t`Please add the name book and tasks` + " ..."}
+                  message={
+                    <>
+                      <Trans>Please add the name book and tasks</Trans> ...
+                    </>
+                  }
                   type="info"
                   showIcon
                   style={{ marginBottom: "1rem" }}

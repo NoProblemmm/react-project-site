@@ -7,7 +7,8 @@ import { Button } from "antd";
 // Добавление локализации с помощью lingui
 export function AppLocales({ ...props }) {
   const [language, setLanguage] = useState(() => {
-    const storedLang = localStorage.getItem("language");
+    const storedLang = localStorage.getItem("language ");
+
     return storedLang || "en";
   });
 

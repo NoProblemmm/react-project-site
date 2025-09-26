@@ -44,7 +44,11 @@ export const AppNotes = observer(() => {
           style={{ marginBottom: "1rem" }}
         />
         <Form.Item
-          label="Note:"
+          label={
+            <>
+              <Trans>Note</Trans>:
+            </>
+          }
           name="note"
           rules={[
             {

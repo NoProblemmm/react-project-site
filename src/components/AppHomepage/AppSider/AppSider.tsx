@@ -3,14 +3,12 @@ import { Layout } from "antd";
 import { Card, Button } from "antd";
 import { taskBookStore } from "../../../store/taskbook.store";
 import { observer } from "mobx-react-lite";
-import { useTheme } from "../../../theme/SwitchTheme";
 import { SearchInput } from "../../ui/searchInput/SearchInput";
 import { Trans } from "@lingui/react/macro";
 const { Sider } = Layout;
 
 export const AppSider = observer(() => {
   const { deleteBook, taskBooks, selectBook } = taskBookStore;
-  const { theme } = useTheme();
 
   const [searchValue, setSearchValue] = useState<String>("");
 
