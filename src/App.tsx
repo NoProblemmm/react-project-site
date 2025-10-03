@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
-import { routeTree } from "./routeTree.gen";
-import "./theme/typeTheme/theme.css";
+import { I18nProvider } from "@lingui/react";
 import { i18n } from "@lingui/core";
+import { routeTree } from "./routeTree.gen";
+import { useConnectSocket } from "./service/socket/useConnectSocket";
 import { messages as ruMessages } from "./locales/ru/messages";
 import { messages as enMessages } from "./locales/en/messages";
-import { useConnectSocket } from "./api/hooks/useConnectSocket";
-import { I18nProvider } from "@lingui/react";
+
+import "./theme/typeTheme/theme.css";
+import { Api } from "./api/Api";
 
 const router = createRouter({ routeTree });
 declare module "@tanstack/react-router" {
@@ -18,7 +20,14 @@ i18n.load("en", enMessages);
 i18n.activate("en");
 
 function App() {
-  useConnectSocket();
+  //useConnectSocket();
+  const { getMyProfile } = Api();
+
+  useEffect(() => {
+    (async () => {
+      await getMyProfile();
+    })();
+  }, []);
 
   // Использование lingui
   useEffect(() => {
