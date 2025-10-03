@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
-import { noteBook, taskBook } from "../tasks-file";
-import { Note } from "../components/AppTaskDetails/AppTaskDetails";
-import { useState } from "react";
+import { noteBook } from "../../tasks-file";
+import { Note } from "./TaskBook.store.types";
+
 class NoteBookStore {
   noteBook: Note[] = [];
 

@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import { taskBook } from "../tasks-file";
-import { Book } from "../components/AppTaskDetails/AppTaskDetails";
+import { taskBook } from "../../tasks-file";
+import { Book } from "./TaskBook.store.types";
 class TaskBookStore {
   taskBooks: Book[] = [];
   selectedBook: Book | null = null;

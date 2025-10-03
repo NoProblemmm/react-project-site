@@ -3,13 +3,13 @@ import { loginValidation } from "../../common/validations";
 import { passwordValidation } from "../../common/validations";
 
 export const signInFormValidation = z.object({
-  email: loginValidation,
+  login: loginValidation,
   password: passwordValidation,
 });
 
 export const signUpFormValidation = z
   .object({
-    email: loginValidation,
+    login: loginValidation,
     password: passwordValidation,
     confirmPassword: passwordValidation,
   })

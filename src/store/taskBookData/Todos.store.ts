@@ -1,7 +1,6 @@
 import axios from "axios";
-import { log } from "console";
 import { makeAutoObservable, reaction, runInAction, when } from "mobx";
-import { action } from "mobx";
+
 interface Todo {
   id: number;
   todo: string;

@@ -1,49 +1,58 @@
 import { Controller, useForm } from "react-hook-form";
-import { useEffect } from "react";
-import "./auth.css";
-import { Input } from "../../components/ui/input/Inpit";
-import { Typography } from "antd";
-import { Button } from "../../components/ui/button/Button";
-import { signInFormValidation, TSignInSchema } from "./validations";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSignInN } from "./hooks/useSignInN";
+import { signInFormValidation, TSignInSchema } from "./validations";
+import { Button } from "../../components/ui/button/Button";
+import { Input } from "../../components/ui/input/Inpit";
+import { Typography } from "antd";
+import "./auth.css";
+import { useEffect } from "react";
+import axios from "axios";
 
 export const SignIn = () => {
-  const { handleNavigateSignUpForm } = useSignInN();
+  const {
+    handleNavigateSignUpForm,
+    handleLogin,
+    handleNavigateChangePass,
+    handleEnterAboutPage,
+    isLoading,
+  } = useSignInN();
 
   const {
     handleSubmit,
     control,
     formState: { errors },
-    reset,
   } = useForm<TSignInSchema>({ resolver: zodResolver(signInFormValidation) });
 
-  const onSubmit = () => {
-    console.log("Вход");
-  };
-  const hendleChangePassword = () => {
-    console.log("Забыл пароль");
-  };
   return (
     <div className="justify-items-center mt-60  ">
       <div className=" flex text-center m-2 p-9 rounded-2xl shadow-neutral-400 shadow-2xl">
         <div className="flex flex-col gap-4">
-          <Typography>
-            <h2>Вход</h2>
-          </Typography>
+          <div className="flex items-center ">
+            <div className="float-left mb-2">
+              <img
+                onClick={handleEnterAboutPage}
+                className="w-7 cursor-pointer"
+                src="/static/enter.svg"
+              />
+            </div>
+            <Typography className="flex justify-center items-center flex-1 ">
+              <h2 className="text-center mr-8">Вход</h2>
+            </Typography>
+          </div>
           <form
             className="justify-items-start"
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(handleLogin)}
           >
             <Controller
               control={control}
-              name="email"
+              name="login"
               render={({ field }) => (
                 <Input {...field} type="text" placeholder="Login" />
               )}
             />
-            {errors.email && (
-              <p className="text-red-500 ">{errors.email.message}</p>
+            {errors.login && (
+              <p className="text-red-500 ">{errors.login.message}</p>
             )}
             <Controller
               name="password"
@@ -62,14 +71,16 @@ export const SignIn = () => {
             )}
             <a
               className=" cursor-pointer text-blue-700 flex"
-              onClick={hendleChangePassword}
+              onClick={handleNavigateChangePass}
             >
               Забыли пароль?
             </a>
             <Button
               className="mt-[1rem] w-full "
               type="primary"
+              loading={isLoading}
               htmlType="submit"
+              iconPosition="end"
             >
               Вход
             </Button>

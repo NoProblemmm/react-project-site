@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { i18n } from "@lingui/core";
 import { messages as ruMessages } from "../ru/messages";
 import { messages as enMessages } from "../en/messages";
-import { i18n } from "@lingui/core";
-import { Button } from "antd";
 
 // Добавление локализации с помощью lingui
 export function AppLocales({ ...props }) {

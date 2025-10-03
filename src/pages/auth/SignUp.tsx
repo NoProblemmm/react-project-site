@@ -1,13 +1,13 @@
 import { useForm, Controller } from "react-hook-form";
+import { observer } from "mobx-react-lite";
 import { zodResolver } from "@hookform/resolvers/zod";
-import "./auth.css";
+import { signUpFormValidation } from "./validations";
+import { TSignUpSchema } from "./validations";
+import { useSignUpN } from "./hooks/useSignUpN";
 import { Input } from "../../components/ui/input/Inpit";
 import { Typography } from "antd";
 import { Button } from "../../components/ui/button/Button";
-import { signUpFormValidation } from "./validations";
-import { TSignUpSchema } from "./validations";
-import { observer } from "mobx-react-lite";
-import { useSignUpN } from "./hooks/useSignUpN";
+import "./auth.css";
 
 export const SignUp = observer(() => {
   const { handleNavigateSignInForm, onSubmit } = useSignUpN();
@@ -34,12 +34,12 @@ export const SignUp = observer(() => {
             className="justify-items-start"
           >
             <Controller
-              name="email"
+              name="login"
               control={control}
               render={({ field }) => <Input {...field} placeholder="Email" />}
             />
-            {errors.email && (
-              <p className="text-red-500">{errors.email.message}</p>
+            {errors.login && (
+              <p className="text-red-500">{errors.login.message}</p>
             )}
             <Controller
               name="password"

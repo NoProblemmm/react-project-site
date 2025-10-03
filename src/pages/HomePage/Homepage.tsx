@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Layout, Spin } from "antd";
 import { observer } from "mobx-react-lite";
+import { useNavigate } from "@tanstack/react-router";
+import { useSessionStore } from "../../store/session/Session.store";
+import { Layout, Spin } from "antd";
 
 // @ts-ignore
 import { AppHeader } from "@components/AppHomepage/AppHeader/AppHeader";
@@ -13,12 +15,15 @@ import { AppContent } from "@components/AppHomepage/AppContent/AppContent";
 
 function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
+  const { isAutentificate } = useSessionStore;
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const timerLoading = setTimeout(() => {
+    if (!isAutentificate) {
+      navigate({ to: "/auth/signIn" });
+    } else {
       setIsLoading(false);
-    }, 500);
-    return () => clearTimeout(timerLoading);
+    }
   }, []);
 
   return (
