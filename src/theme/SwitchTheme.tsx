@@ -1,10 +1,5 @@
-import React, {
-  useState,
-  useLayoutEffect,
-  memo,
-  useCallback,
-  useMemo,
-} from "react";
+import React, { useState, useLayoutEffect, useCallback } from "react";
+
 const isDarkTheme = window?.matchMedia("(prefers-color-scheme: dark").matches;
 const defaultTheme = isDarkTheme ? "dark" : "light";
 

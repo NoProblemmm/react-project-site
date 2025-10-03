@@ -1,18 +1,12 @@
 import React from "react";
-import { Layout, Button } from "antd";
-import { Divider, List, Checkbox, Progress } from "antd";
-import { taskBookStore } from "../../../store/taskbook.store";
+import { Layout, Button, Divider, List, Checkbox, Progress } from "antd";
 import { observer } from "mobx-react-lite";
 import { Trans } from "@lingui/react/macro";
 import { t } from "@lingui/core/macro";
+import { taskBookStore } from "../../../store/taskBookData/TaskBook.store";
+import "./AppContent.styles.css";
 
 const { Content } = Layout;
-
-const contentStyle: React.CSSProperties = {
-  textAlign: "left",
-  width: "100%",
-  height: "50rem",
-};
 
 export const AppContent = observer(() => {
   const { deleteBook, selectedBook } = taskBookStore;
@@ -49,7 +43,7 @@ export const AppContent = observer(() => {
       : 0;
   return (
     <>
-      <Content style={contentStyle} className="content-custom ">
+      <Content className="content-custom ">
         <>
           <Divider
             orientation="left"
