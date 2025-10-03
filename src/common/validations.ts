@@ -1,9 +1,9 @@
 import { z } from "zod";
-import { isEmail, isPassword } from "./helpers/regex";
+import { isLogin, isPassword } from "./helpers/regex";
 
 export const loginValidation = z
   .string({ message: "Введите email." })
-  .refine((value) => isEmail(value), {
+  .refine((value) => isLogin(value), {
     message: "В поле email допущена ошибка",
   });
 

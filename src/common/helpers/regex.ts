@@ -1,9 +1,8 @@
-export const EMAIL_REGEX = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
-export const PASSWORD_REGEX = new RegExp(
-  /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$&*])[A-Za-z\d!@#$&*]{8,}$/
-);
-
-export const isEmail = (value: string): boolean => {
+export const EMAIL_REGEX = new RegExp(/^.*[\d\w]+.*$/);
+export const PASSWORD_REGEX = new RegExp(/^.*[\d\w]+.*$/);
+// email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+// password: /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$&*])[A-Za-z\d!@#$&*]{8,}$/
+export const isLogin = (value: string): boolean => {
   return EMAIL_REGEX.test(value);
 };
 
