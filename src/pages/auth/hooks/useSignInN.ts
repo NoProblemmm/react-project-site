@@ -1,17 +1,17 @@
 import { useCallback, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { ISignInRequest } from "../../../api/data-details";
-import { Api } from "../../../api/Api";
+import { useSessionStore } from "../../../store/session/Session.store";
 
 export const useSignInN = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const { signIn } = Api();
+  const signInStore = useSessionStore.signInStore;
 
   const handleLogin = useCallback(async (data: ISignInRequest) => {
     setIsLoading(true);
-    const responce = await signIn(data);
-    if (responce) {
+    const response = await signInStore(data);
+    if (response) {
       setIsLoading(false);
       navigate({ to: "/" });
     }

@@ -6,8 +6,6 @@ import { Button } from "../../components/ui/button/Button";
 import { Input } from "../../components/ui/input/Inpit";
 import { Typography } from "antd";
 import "./auth.css";
-import { useEffect } from "react";
-import axios from "axios";
 
 export const SignIn = () => {
   const {

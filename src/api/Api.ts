@@ -1,40 +1,35 @@
 import { useSessionStore } from "../store/session/Session.store";
+import { ApiTokenProvider, useApiTokenProvider } from "./ApiToken.provider";
 import { ISignInRequest } from "./data-details";
-import useApi from "./hooks/useApi";
+import { useApi } from "./hooks/useApi";
+
+const useApiCopy = new useApi("https://dummyjson.com/user/");
 
 export const Api = () => {
-  const { POST, GET } = useApi({ baseUrl: "https://dummyjson.com/user/" });
-  const token = localStorage.getItem("refresh_token");
-  const { signInStore } = useSessionStore;
+  const refreshToken = useApiTokenProvider.refreshToken;
+  const { POST, GET } = useApiCopy;
 
   // Авторизация
   const signIn = async (data: ISignInRequest) => {
-    try {
-      const response = await POST("login", {
-        username: data.login,
-        password: data.password,
-      });
-      signInStore(response);
-      return response;
-    } catch (error) {
-      console.log("Ошибка авторизации:", error);
-    } finally {
-    }
+    const response = await POST("login", {
+      username: data.login,
+      password: data.password,
+    });
+    return response;
   };
 
   // Получение профиля текущего авторизованного пользователя.
   const getMyProfile = async () => {
-    if (!token) {
+    if (!refreshToken) {
       return null;
     }
     try {
       const response = await GET("me", {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${refreshToken}`,
         },
         credentials: "include",
       });
-      signInStore(response);
       return response;
     } catch (error) {
       console.error("Ошибка получения профиля:", error);
