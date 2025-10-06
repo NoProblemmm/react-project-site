@@ -10,7 +10,7 @@ import { messages as enMessages } from "../../locales/en/messages";
 import { useApiTokenProvider } from "../../api/ApiToken.provider";
 import { useSessionStore } from "../../store/session/Session.store";
 import { Flex, Spin } from "antd";
-import "./theme/typeTheme/theme.css";
+import "../../theme/typeTheme/theme.css";
 
 const loading = (
   <div className="w-[100%] h-[100%] pt-[30%] justify-items-center">
