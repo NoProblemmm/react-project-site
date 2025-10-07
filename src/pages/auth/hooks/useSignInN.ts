@@ -2,18 +2,43 @@ import { useCallback, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { ISignInRequest } from "../../../api/data-details";
 import { useSessionStore } from "../../../store/session/Session.store";
+import { message } from "antd";
 
 export const useSignInN = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const signInStore = useSessionStore.signInStore;
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const authSuccessMes = () => {
+    messageApi.open({
+      type: "success",
+      content: "Authorization success!",
+    });
+  };
+
+  const authErrorMes = () => {
+    messageApi.open({
+      type: "error",
+      content: "Authorization trouble!",
+    });
+  };
 
   const handleLogin = useCallback(async (data: ISignInRequest) => {
     setIsLoading(true);
-    const response = await signInStore(data);
-    if (response) {
+    try {
+      const response = await signInStore(data);
+      if (!response) {
+        authErrorMes();
+      } else {
+        authSuccessMes();
+        navigate({ to: "/" });
+      }
+    } catch (error) {
+      authErrorMes();
+      console.log(String(error));
+    } finally {
       setIsLoading(false);
-      navigate({ to: "/" });
     }
   }, []);
 

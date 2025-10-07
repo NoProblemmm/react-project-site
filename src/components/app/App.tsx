@@ -55,7 +55,7 @@ function App() {
       setIsLoading(false);
       return;
     }
-
+    //Получение пользователя, по refreshToken
     async function getProfile() {
       try {
         const response = await getMyProfile();
