@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Layout } from "antd";
 // @ts-ignore
-import { AppHeader } from "@components/AppHomepage/AppHeader/AppHeader";
+import { AppHeader } from "@components/appHome/header/AppHeader";
 // @ts-ignore
-import { AppFooter } from "@components/AppHomepage/AppFooter/AppFooter";
+import { AppFooter } from "@components/appHome/footer/AppFooter";
 // @ts-ignore
-import AppAboutPage from "@components/AppAboutPage/AppAboutPage";
+import AppAboutPage from "@components/appAbout/AppAboutPage";
 export function AboutPage() {
   return (
     <div className="layout-container  rounded-xs p-5">

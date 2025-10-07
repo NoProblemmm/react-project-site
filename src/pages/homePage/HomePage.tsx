@@ -5,13 +5,13 @@ import { useSessionStore } from "../../store/session/Session.store";
 import { Layout, Spin } from "antd";
 
 // @ts-ignore
-import { AppHeader } from "@components/AppHomepage/AppHeader/AppHeader";
+import { AppHeader } from "@components/appHome/header/AppHeader";
 // @ts-ignore
-import { AppSider } from "@components/AppHomepage/AppSider/AppSider";
+import { AppSider } from "@components/appHome/sider/AppSider";
 // @ts-ignore
-import { AppFooter } from "@components/AppHomepage/AppFooter/AppFooter";
+import { AppFooter } from "@components/appHome/footer/AppFooter";
 // @ts-ignore
-import { AppContent } from "@components/AppHomepage/AppContent/AppContent";
+import { AppContent } from "@components/appHome/content/AppContent";
 
 function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
