@@ -5,7 +5,7 @@ import { AppHeader } from "@components/appHome/header/AppHeader";
 // @ts-ignore
 import { AppFooter } from "@components/appHome/footer/AppFooter";
 // @ts-ignore
-import AppAboutPage from "@components/appAbout/AppAboutPage";
+import AppAbout from "@components/appAbout/AppAbout";
 export function AboutPage() {
   return (
     <div className="layout-container  rounded-xs p-5">
@@ -13,7 +13,7 @@ export function AboutPage() {
         <title>About</title>
         <link rel="icon" type="image" href="/static/favicon.ico" />
         <AppHeader />
-        <AppAboutPage />
+        <AppAbout />
         <AppFooter />
       </Layout>
     </div>

@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 import todosStore from "../../store/taskBookData/Todos.store";
 import { List, Typography, Spin } from "antd";
 
-const AppTodosPage = observer(() => {
+const AppTodos = observer(() => {
   const { getAll, todos, isLoading } = todosStore;
 
   useEffect(() => {
@@ -41,4 +41,4 @@ const AppTodosPage = observer(() => {
     </div>
   );
 });
-export default AppTodosPage;
+export default AppTodos;

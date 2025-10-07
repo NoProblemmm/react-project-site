@@ -2,7 +2,7 @@ import { Layout } from "antd";
 // @ts-ignore
 import { AppHeader } from "@components/AppHomepage/AppHeader/AppHeader";
 // @ts-ignore
-import AppTodosPage from "@components/AppTodosPage/AppTodosPage";
+import AppTodos from "@components/AppTodosPage/AppTodos";
 
 export function TodosReq() {
   return (
@@ -11,7 +11,7 @@ export function TodosReq() {
         <title>Todos</title>
         <link rel="icon" type="image" href="/static/favicon.ico" />
         <AppHeader />
-        <AppTodosPage />
+        <AppTodos />
       </Layout>
     </div>
   );
