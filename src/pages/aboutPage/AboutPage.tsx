@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Layout } from "antd";
 // @ts-ignore
-import { AppHeader } from "@components/appHome/header/AppHeader";
+import { AppHeader } from "@components/appHome/appHeader/AppHeader";
 // @ts-ignore
-import { AppFooter } from "@components/appHome/footer/AppFooter";
+import { AppFooter } from "@components/appHome/appFooter/AppFooter";
 // @ts-ignore
 import AppAbout from "@components/appAbout/AppAbout";
 export function AboutPage() {
