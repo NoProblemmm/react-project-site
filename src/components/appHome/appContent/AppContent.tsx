@@ -9,7 +9,7 @@ import "./AppContent.styles.css";
 const { Content } = Layout;
 
 export const AppContent = observer(() => {
-  const { deleteBook, selectedBook } = taskBookStore;
+  const { deleteBook, selectedBook, clearSelectBook } = taskBookStore;
 
   if (!selectedBook || selectedBook == null) {
     return (
@@ -17,19 +17,17 @@ export const AppContent = observer(() => {
         style={{ width: "100%", height: "100%" }}
         className="content-custom "
       >
-        <Divider
-          orientation="left"
-          className="content-custom "
-          style={{
-            color: "var(--text-color)",
-            borderColor: "var(--text-color)",
-          }}
-        >
+        <Divider orientation="left" className="content-custom-divider">
           <Trans>Look Book</Trans>
         </Divider>
       </div>
     );
   }
+
+  const handleCloseSelectedBook = () => {
+    clearSelectBook();
+  };
+
   const handleCheck = (index: number, newComplited: boolean) => {
     taskBookStore.changeTaskCompletion(selectedBook.id, index, newComplited);
   };
@@ -43,18 +41,17 @@ export const AppContent = observer(() => {
       : 0;
   return (
     <>
-      <Content className="content-custom ">
+      <Content className="content-custom">
         <>
-          <Divider
-            orientation="left"
-            className="content-custom "
-            style={{
-              color: "var(--text-color)",
-              borderColor: "var(--text-color)",
-            }}
-          >
+          <Divider orientation="left" className="content-custom-divider">
             {selectedBook.title}
           </Divider>
+          <Button
+            className="mb-2 flex w-[99%]"
+            onClick={() => handleCloseSelectedBook()}
+          >
+            <h1 className="text-4xl mb-1">←</h1>
+          </Button>
 
           <div className="max-w-[88rem] h-[100%] overflow-y-scroll overflow-x-hidden scrollbar-sider-content">
             <List
