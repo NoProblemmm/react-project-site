@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { RouterProvider, createRouter } from "@tanstack/react-router";
+import {
+  RouterProvider,
+  createRouter,
+  useNavigate,
+} from "@tanstack/react-router";
 import { I18nProvider } from "@lingui/react";
 import { i18n } from "@lingui/core";
 import { routeTree } from "../../routeTree.gen";
-import { Api } from "../../api/Api";
 import { useConnectSocket } from "../../service/socket/useConnectSocket";
 import { messages as ruMessages } from "../../locales/ru/messages";
 import { messages as enMessages } from "../../locales/en/messages";
 import { useApiTokenProvider } from "../../api/ApiToken.provider";
-import { useSessionStore } from "../../store/session/Session.store";
 import { Flex, Spin } from "antd";
 import "../../theme/typeTheme/theme.css";
 
@@ -23,9 +25,7 @@ const loading = (
 export const router = createRouter({
   routeTree,
   defaultPendingMinMs: 500,
-  defaultPendingComponent: () => {
-    loading;
-  },
+  defaultPendingComponent: () => loading,
 });
 
 i18n.load("en", enMessages);
@@ -35,9 +35,7 @@ function App() {
   // useConnectSocket(); // Сокет
 
   const [isLoading, setIsLoading] = useState(true);
-  const { getMyProfile } = Api();
   const refreshToken = useApiTokenProvider.refreshToken;
-  const signInStore = useSessionStore.signInStore;
 
   useEffect(() => {
     let languageSetting = localStorage.getItem("language") || "en";
@@ -49,28 +47,6 @@ function App() {
       i18n.load("en", enMessages);
       i18n.activate("en");
     }
-
-    if (!refreshToken) {
-      console.log("Следует войти");
-      setIsLoading(false);
-      return;
-    }
-    //Получение пользователя, по refreshToken
-    async function getProfile() {
-      try {
-        const response = await getMyProfile();
-        const data = {
-          login: response.username,
-          password: response.password,
-        };
-        await signInStore(data);
-      } catch (error) {
-        console.error("Ошибка загрузки профиля:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    getProfile();
   }, []);
 
   return (
