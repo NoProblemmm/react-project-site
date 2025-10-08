@@ -41,6 +41,10 @@ class TaskBookStore {
     console.log("Открыта книга:", book.title);
   };
 
+  clearSelectBook = () => {
+    this.selectedBook = null;
+  };
+
   clearMessage = () => {
     this.messageBook = [];
   };

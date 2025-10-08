@@ -2,26 +2,53 @@ import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import { useNavigate } from "@tanstack/react-router";
 import { useSessionStore } from "../../store/session/Session.store";
+
+import { useApiTokenProvider } from "../../api/ApiToken.provider";
 import { Layout, Spin } from "antd";
 
 // @ts-ignore
-import { AppHeader } from "@components/appHome/header/AppHeader";
+import { AppHeader } from "@components/appHome/AppHeader/AppHeader";
 // @ts-ignore
-import { AppSider } from "@components/appHome/sider/AppSider";
+import { AppSider } from "@components/appHome/AppSider/AppSider";
 // @ts-ignore
-import { AppFooter } from "@components/appHome/footer/AppFooter";
+import { AppFooter } from "@components/appHome/AppFooter/AppFooter";
 // @ts-ignore
-import { AppContent } from "@components/appHome/content/AppContent";
+import { AppContent } from "@components/appHome/AppContent/AppContent";
+import { Api } from "../../api/Api";
 
 function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
-  const { isAutentificate } = useSessionStore;
+  const { getMyProfile } = Api();
+  const { isAutentificate, signInStore } = useSessionStore;
+  const refreshToken = useApiTokenProvider.refreshToken;
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!isAutentificate) {
-      navigate({ to: "/auth/signIn" });
+      if (!refreshToken) {
+        navigate({ to: "/auth/signIn" });
+      } else if (refreshToken) {
+        //Получение пользователя, по refreshToken
+        async function getProfile() {
+          try {
+            const response = await getMyProfile();
+            const data = {
+              login: response.username,
+              password: response.password,
+            };
+            await signInStore(data);
+            if (useSessionStore.isAutentificate) {
+            }
+          } catch (error) {
+            console.error("Ошибка загрузки профиля:", error);
+          } finally {
+            setIsLoading(false);
+          }
+        }
+        getProfile();
+      }
     } else {
+      navigate({ to: "/" });
       setIsLoading(false);
     }
   }, []);
