@@ -1,0 +1,33 @@
+@import url("./../../../theme/typeTheme/theme.css");
+
+.sider-custom {
+  height: 45rem;
+}
+
+.sider-nav-menu {
+  color: var(--text-color);
+}
+
+.sider-nav-menu__book {
+  filter: var(--default-svg-color);
+  transition: filter 200ms linear;
+}
+
+@media (max-width: 640px) {
+  .sider-custom {
+    flex: auto !important;
+    max-width: 40px !important;
+    min-width: auto !important;
+    width: 40px !important;
+  }
+}
+
+.ant-drawer-body {
+  padding: 20px !important;
+}
+
+.drawer-sider {
+  width: 95% !important;
+  background-color: var(--sider-bg-color) !important;
+  color: var(--text-color) !important;
+}

@@ -33,7 +33,7 @@ export const AppHeader = memo(
       messageModal,
       drawer,
       sizeWindow,
-      menuOpen,
+      headerMenuOpen,
       theme,
       messageBook,
     } = useHeaderLogic();
@@ -45,7 +45,7 @@ export const AppHeader = memo(
               <img src="/static/menu.svg" alt="" />
             </div>
           ) : null}
-          {!sizeWindow || menuOpen ? (
+          {!sizeWindow || headerMenuOpen ? (
             <>
               {showButtons && (
                 <Button onClick={toggleModal} className="sm:m-1">

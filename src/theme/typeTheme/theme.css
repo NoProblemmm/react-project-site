@@ -19,7 +19,7 @@ html[data-theme="dark"] {
   --icon-book-color: #838383;
   --text-color: #fff;
 
-  --header-bell-color: invert(100%) sepia(0%) saturate(0%) hue-rotate(79deg)
+  --default-svg-color: invert(100%) sepia(0%) saturate(0%) hue-rotate(79deg)
     brightness(108%) contrast(101%);
 
   --sider-bg-color: #040029;
@@ -59,7 +59,7 @@ html[data-theme="light"] {
   --icon-book-color: #000000;
   --text-color: #000000;
 
-  --header-bell-color: invert(0%) sepia(0%) saturate(7468%) hue-rotate(158deg)
+  --default-svg-color: invert(0%) sepia(0%) saturate(7468%) hue-rotate(158deg)
     brightness(103%) contrast(100%);
 
   --sider-bg-color: #8d8d8d;
@@ -143,7 +143,7 @@ html[data-theme="light"] {
   }
 }
 
-.sider-custom {
+.sider-custom-theme {
   background-color: var(--sider-bg-color);
   color: var(--text-color);
   transition:
@@ -226,7 +226,7 @@ html[data-theme="light"] {
 }
 
 .header-img {
-  filter: var(--header-bell-color);
+  filter: var(--default-svg-color);
   transition: filter 200ms linear;
 }
 

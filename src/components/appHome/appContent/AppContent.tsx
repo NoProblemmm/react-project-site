@@ -53,7 +53,7 @@ export const AppContent = observer(() => {
             <h1 className="text-4xl mb-1">←</h1>
           </Button>
 
-          <div className="max-w-[88rem] h-[100%] overflow-y-scroll overflow-x-hidden scrollbar-sider-content">
+          <div className="max-w-[88rem] h-[39rem] overflow-y-scroll overflow-x-hidden scrollbar-sider-content">
             <List
               style={{
                 color: "var(--text-color)",

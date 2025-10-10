@@ -14,8 +14,8 @@ export const useHeaderLogic = () => {
   const { theme, switchTheme } = useTheme();
   const { t } = useTranslation();
   const { isLogout } = useSessionStore;
-  const [sizeWindow, setSizeWindow] = useState(window.innerWidth < 640);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [sizeWindow, setSizeWindow] = useState(window.innerWidth <= 640);
+  const [headerMenuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { getMyProfile } = Api();
 
@@ -25,7 +25,7 @@ export const useHeaderLogic = () => {
   const toggleDrawer = useCallback(() => setDrawer((prev) => !prev), []);
 
   const handleResize = useCallback(() => {
-    const isSizeWindow = window.innerWidth < 640;
+    const isSizeWindow = window.innerWidth <= 640;
     setSizeWindow(isSizeWindow);
   }, []);
 
@@ -64,7 +64,7 @@ export const useHeaderLogic = () => {
     drawer,
     toggleDrawer,
     sizeWindow,
-    menuOpen,
+    headerMenuOpen,
     toggleMenu,
     theme,
     switchTheme,
