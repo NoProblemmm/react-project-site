@@ -53,25 +53,23 @@ export const AppHeader = memo(
                 </Button>
               )}
               {isAutentificate && (
-                <Link to="/">
-                  <Button type="dashed" className="w-full sm:w-auto">
-                    <Trans>Task</Trans>
-                  </Button>
-                </Link>
-              )}
-              {isAutentificate && (
-                <Link to="/about">
-                  <Button type="dashed" className="w-full sm:w-auto sm:m-1">
-                    <Trans>About</Trans>
-                  </Button>
-                </Link>
-              )}
-              {isAutentificate && (
-                <Link to="/todos">
-                  <Button type="dashed" className="w-full sm:w-auto">
-                    <Trans>Todo</Trans>
-                  </Button>
-                </Link>
+                <>
+                  <Link to="/">
+                    <Button type="dashed" className="w-full sm:w-auto">
+                      <Trans>Task</Trans>
+                    </Button>
+                  </Link>
+                  <Link to="/about">
+                    <Button type="dashed" className="w-full sm:w-auto sm:m-1">
+                      <Trans>About</Trans>
+                    </Button>
+                  </Link>
+                  <Link to="/todos">
+                    <Button type="dashed" className="w-full sm:w-auto">
+                      <Trans>Todo</Trans>
+                    </Button>
+                  </Link>
+                </>
               )}
 
               {showButtons && (
@@ -82,48 +80,49 @@ export const AppHeader = memo(
                   <Trans>Notes</Trans>
                 </Button>
               )}
-
-              <div className="relative flex items-center float-left gap-5 text-black">
-                <button
-                  onClick={switchTheme}
-                  className="message-bell relative flex items-center float-right mt-[1rem]"
-                >
-                  <img
-                    className="w-9 header-img"
-                    src={
-                      theme === "dark"
-                        ? "/static/light-theme.svg"
-                        : "/static/dark-theme.svg"
-                    }
-                  />
-                </button>
-              </div>
-              <div className="relative flex items-center float-right gap-5 text-black">
-                <AppLocales />
-                {isAutentificate && (
+              <div className="inline mb-3">
+                <div className="relative flex items-center float-left gap-5 text-black">
                   <button
-                    className="message-bell relative flex items-center float-right mt-[1.3rem]"
-                    onClick={toggleMessageModal}
+                    onClick={switchTheme}
+                    className="message-bell relative flex items-center float-right mt-[1rem]"
                   >
-                    <div
-                      className="absolute top-[-6px] right-[5px] bg-red-600 rounded-full flex items-center justify-center
-               text-white text-xs font-bold px-1 min-w-[20px] max-w-[50px] overflow-hidden whitespace-nowrap z-10 "
-                    >
-                      {messageBook?.length === 0 ? "" : messageBook.length}
-                    </div>
-                    <img src="/static/bell.svg" className="w-6 header-img " />
+                    <img
+                      className="w-9 header-img"
+                      src={
+                        theme === "dark"
+                          ? "/static/light-theme.svg"
+                          : "/static/dark-theme.svg"
+                      }
+                    />
                   </button>
-                )}
+                </div>
+                <div className="relative flex items-center float-right gap-5 text-black">
+                  <AppLocales />
+                  {isAutentificate && (
+                    <button
+                      className="message-bell relative flex items-center float-right mt-[1.3rem]"
+                      onClick={toggleMessageModal}
+                    >
+                      <div
+                        className="absolute top-[-6px] right-[5px] bg-red-600 rounded-full flex items-center justify-center
+               text-white text-xs font-bold px-1 min-w-[20px] max-w-[50px] overflow-hidden whitespace-nowrap z-10 "
+                      >
+                        {messageBook?.length === 0 ? "" : messageBook.length}
+                      </div>
+                      <img src="/static/bell.svg" className="w-6 header-img " />
+                    </button>
+                  )}
 
-                {messageModal && <MessageModal />}
-                <div className="h-9 bg-stone-400 w-[0.1px] rounded-2xl mt-4"></div>
+                  {messageModal && <MessageModal />}
+                  <div className="h-9 bg-stone-400 w-[0.1px] rounded-2xl mt-4"></div>
 
-                <button
-                  onClick={logout}
-                  className="message-bell relative flex items-center float-right mt-[1.3rem]"
-                >
-                  <img src="/static/exit.svg" className="w-8 header-img " />
-                </button>
+                  <button
+                    onClick={logout}
+                    className="message-bell relative flex items-center float-right mt-[1.3rem]"
+                  >
+                    <img src="/static/exit.svg" className="w-8 header-img " />
+                  </button>
+                </div>
               </div>
               <Drawer
                 width={600}
