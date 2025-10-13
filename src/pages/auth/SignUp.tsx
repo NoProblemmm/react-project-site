@@ -46,9 +46,9 @@ export const SignUp = observer(() => {
               control={control}
               render={({ field }) => (
                 <Input.Password
-                  className="mt-3"
                   placeholder="Password"
                   {...field}
+                  className="mt-3"
                 />
               )}
             />
@@ -62,7 +62,7 @@ export const SignUp = observer(() => {
               control={control}
               render={({ field }) => (
                 <Input.Password
-                  className="mt-3"
+                  className="mt-3 mb-3"
                   placeholder="Confirm Password"
                   {...field}
                 />
@@ -72,16 +72,12 @@ export const SignUp = observer(() => {
               <p className="text-red-500">{errors.confirmPassword.message}</p>
             )}
 
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="mt-[1rem] w-full "
-            >
+            <Button type="primary" htmlType="submit" className="w-full mb-2">
               Регистрация
             </Button>
             <Button
               type="link"
-              className=" w-full "
+              className="w-full"
               onClick={handleNavigateSignInForm}
             >
               Войти

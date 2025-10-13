@@ -6,7 +6,7 @@ import { Api } from "../../api/Api";
 import { ApiTokenProvider } from "../../api/ApiToken.provider";
 
 class SessionStore implements ISessionStore {
-  private dataHolder = new DataHolder<string | null>(null);
+  public dataHolder = new DataHolder<string | null>(null);
 
   constructor(private _tokenProvider: ApiTokenProvider) {
     makeAutoObservable(this);

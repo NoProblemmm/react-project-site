@@ -58,7 +58,7 @@ export const SignIn = () => {
               render={({ field }) => (
                 <Input.Password
                   {...field}
-                  className="mt-3"
+                  className="mb-3 mt-3"
                   type="text"
                   placeholder="Password"
                 />
@@ -68,7 +68,7 @@ export const SignIn = () => {
               <p className="text-red-500">{errors.password.message}</p>
             )}
             <a
-              className=" cursor-pointer text-blue-700 flex"
+              className="cursor-pointer text-blue-700 flex mb-3"
               onClick={handleNavigateChangePass}
             >
               Забыли пароль?

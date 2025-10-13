@@ -39,16 +39,17 @@ export const AppHeader = memo(
     } = useHeaderLogic();
     return (
       <>
-        <Header className="header-custom text-center flex-col ">
+        <Header className="header-custom text-center flex-col">
           {sizeWindow ? (
             <div className="tab-menu" onClick={toggleMenu}>
               <img src="/static/menu.svg" alt="" />
             </div>
           ) : null}
+
           {!sizeWindow || headerMenuOpen ? (
             <>
               {showButtons && (
-                <Button onClick={toggleModal} className="sm:m-1">
+                <Button onClick={toggleModal} className=" sm:m-1">
                   <Trans>New Task</Trans>
                 </Button>
               )}
@@ -80,12 +81,17 @@ export const AppHeader = memo(
                   <Trans>Notes</Trans>
                 </Button>
               )}
-              <div className="inline mb-3">
-                <div className="relative flex items-center float-left gap-5 text-black">
-                  <button
-                    onClick={switchTheme}
-                    className="message-bell relative flex items-center float-right mt-[1rem]"
+              <div className="inline ">
+                {sizeWindow ? (
+                  <div
+                    className="text-left text-4xl relative cursor-pointer"
+                    onClick={toggleMenu}
                   >
+                    <p className="absolute left-[-2.5rem] top-2">^</p>
+                  </div>
+                ) : null}
+                <div className="float-left h-5 pt-3">
+                  <button onClick={switchTheme} className="message-bell ">
                     <img
                       className="w-9 header-img"
                       src={
@@ -96,29 +102,33 @@ export const AppHeader = memo(
                     />
                   </button>
                 </div>
-                <div className="relative flex items-center float-right gap-5 text-black">
+                <div className="relative flex items-center float-right gap-5 text-black pt-3">
                   <AppLocales />
                   {isAutentificate && (
                     <button
-                      className="message-bell relative flex items-center float-right mt-[1.3rem]"
+                      className="message-bell relative float-right "
                       onClick={toggleMessageModal}
                     >
                       <div
                         className="absolute top-[-6px] right-[5px] bg-red-600 rounded-full flex items-center justify-center
                text-white text-xs font-bold px-1 min-w-[20px] max-w-[50px] overflow-hidden whitespace-nowrap z-10 "
                       >
-                        {messageBook?.length === 0 ? "" : messageBook.length}
+                        {messageBook?.length === 0
+                          ? ""
+                          : +messageBook.length > 999
+                            ? "+999"
+                            : messageBook.length}
                       </div>
                       <img src="/static/bell.svg" className="w-6 header-img " />
                     </button>
                   )}
 
                   {messageModal && <MessageModal />}
-                  <div className="h-9 bg-stone-400 w-[0.1px] rounded-2xl mt-4"></div>
+                  <div className="h-9 bg-stone-400 w-[0.1px] rounded-2xl "></div>
 
                   <button
                     onClick={logout}
-                    className="message-bell relative flex items-center float-right mt-[1.3rem]"
+                    className="message-bell relative flex items-center float-right"
                   >
                     <img src="/static/exit.svg" className="w-8 header-img " />
                   </button>
