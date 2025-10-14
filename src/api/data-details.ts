@@ -17,3 +17,15 @@ export interface ISignUpRequest {
   login: string;
   password: string;
 }
+
+export interface ISignInResponse {
+  id: number;
+  username: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  gender: string;
+  image: string;
+  accessToken: string;
+  refreshToken: string;
+}
