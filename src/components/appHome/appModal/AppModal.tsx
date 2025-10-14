@@ -1,29 +1,31 @@
 import React, { memo, FC } from "react";
 import { Trans } from "@lingui/react/macro";
 import { t } from "@lingui/core/macro";
-import { Book } from "../../../store/taskBookData/TaskBook.store.types";
+import { Book, Task } from "../../../store/taskBookData/TaskBook.store.types";
 import { taskBookStore } from "../../../store/taskBookData/TaskBook.store";
 import { CloseOutlined } from "@ant-design/icons";
 import { Button, Card, Form, Input, Space, Alert, message } from "antd";
+import { IModalFormValues } from "./AppModal.types";
 
 type Props = {
   toggleModal: () => void;
 };
 
-export const AppModal = memo(({ toggleModal }: Props) => {
+export const AppModal: FC<Props> = memo(({ toggleModal }: Props) => {
   const [form] = Form.useForm();
   const { addBook } = taskBookStore;
   let count = 1;
-  function onFinish(values: any) {
+
+  function onFinish(values: IModalFormValues) {
     if (values.items && values.items.length > 0) {
       const firstItem = values.items[0];
-
+      console.log(values);
       const newBook: Book = {
         id: +taskBookStore.taskBooks.length + 1,
         title: firstItem.title,
-        tasks: firstItem.tasks.map((taskItem: any) => ({
+        tasks: firstItem.tasks.map((taskItem: Task) => ({
           id: count++,
-          name: taskItem.task,
+          name: taskItem.name,
           complited: false,
         })),
       };
@@ -34,6 +36,8 @@ export const AppModal = memo(({ toggleModal }: Props) => {
       count = 1;
       toggleModal();
       message.info(`The book was created successfully!`);
+    } else {
+      throw Error("Ошибка создания книги!");
     }
   }
 
@@ -105,7 +109,7 @@ export const AppModal = memo(({ toggleModal }: Props) => {
                       >
                         {subFields.map((subField) => (
                           <Space key={subField.key}>
-                            <Form.Item noStyle name={[subField.name, "task"]}>
+                            <Form.Item noStyle name={[subField.name, "name"]}>
                               <Input placeholder={t`task`} name="task" />
                             </Form.Item>
                             <CloseOutlined
