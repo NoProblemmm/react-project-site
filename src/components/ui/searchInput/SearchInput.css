@@ -12,6 +12,11 @@
   }
 }
 
+.container.focused {
+  border-color: #0051ff;
+  box-shadow: 2px 2px 5px #002a85;
+}
+
 .img-search {
   width: 1.2em;
   margin-left: 1em;
