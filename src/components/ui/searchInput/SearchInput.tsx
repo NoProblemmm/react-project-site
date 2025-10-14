@@ -1,48 +1,60 @@
-import React, { useRef } from "react";
+import React, { useRef, memo, useCallback, useState, FC } from "react";
 import "./SearchInput.css";
 
 type Props = {
-  value: any;
+  value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   setSearchValue: (value: string) => void;
 };
 
-export function SearchInput({ value, onChange, setSearchValue }: Props) {
-  const inputRef = useRef<HTMLInputElement>(null);
+const correctValue = (value: string): string => {
+  return value.trimStart();
+};
+export const SearchInput: FC<Props> = memo(
+  ({ value, onChange, setSearchValue }: Props) => {
+    const inputRef = useRef<HTMLInputElement>(null);
+    const [isFocused, setIsFocused] = useState(false);
 
-  const handleInpurActive = () => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  };
+    const handleInpurActive = useCallback(() => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    }, []);
 
-  const deleteInputValue = () => {
-    setSearchValue("");
-  };
+    const handleFocusIllumination = useCallback(() => {
+      setIsFocused((prev) => !prev);
+    }, []);
 
-  return (
-    <div className="container">
-      <img
-        className="img-search"
-        onClick={handleInpurActive}
-        src="/static/search.svg"
-      ></img>
+    const deleteInputValue = useCallback(() => {
+      setSearchValue("");
+    }, []);
 
-      <input
-        ref={inputRef}
-        placeholder="Search ..."
-        className="search-input"
-        value={value}
-        onChange={onChange}
-        type="text"
-      />
-      {value && (
+    return (
+      <div className={`container ${isFocused ? "focused" : ""}`}>
         <img
-          className="img-close"
-          src="/static/close.svg"
-          onClick={deleteInputValue}
+          className="img-search"
+          onClick={handleInpurActive}
+          src="/static/search.svg"
         ></img>
-      )}
-    </div>
-  );
-}
+
+        <input
+          ref={inputRef}
+          placeholder="Search ..."
+          className="search-input"
+          value={correctValue(value)}
+          onChange={onChange}
+          type="text"
+          onFocus={handleFocusIllumination}
+          onBlur={handleFocusIllumination}
+        />
+        {value && (
+          <img
+            className="img-close"
+            src="/static/close.svg"
+            onClick={deleteInputValue}
+          ></img>
+        )}
+      </div>
+    );
+  }
+);
