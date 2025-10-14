@@ -10,10 +10,6 @@ export interface Task {
   complited: boolean;
 }
 
-export interface State {
-  taskBooks: Book[];
-}
-
 export interface Note {
   id: number;
   title: string;

@@ -1,9 +1,10 @@
-import { ISignInRequest } from "../../api/data-details";
+import { ISignInRequest, ISignInResponse } from "../../api/data-details";
 
 export interface ISessionStore {
   isLoading: boolean;
-
   isAutentificate: boolean;
+
   signInStore(params: ISignInRequest): Promise<void>;
   isLogout(): void;
+  clear(): void;
 }

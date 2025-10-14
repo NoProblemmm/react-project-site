@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { taskBookStore } from "../../../../store/taskBookData/TaskBook.store";
 import { Book } from "../../../../store/taskBookData/TaskBook.store.types";
-import { fa } from "zod/v4/locales";
 
 export const useSiderLogic = () => {
-  const [sizeWindow, setSizeWindow] = useState(window.innerWidth <= 640);
-  const [drawerSider, setDrawerSider] = useState(false);
-  const [searchValue, setSearchValue] = useState<String>("");
+  const [sizeWindow, setSizeWindow] = useState<boolean>(
+    window.innerWidth <= 640
+  );
+  const [drawerSider, setDrawerSider] = useState<boolean>(false);
+  const [searchValue, setSearchValue] = useState<string>("");
   const { deleteBook, taskBooks, selectBook } = taskBookStore;
 
   const handleResize = useCallback(() => {
