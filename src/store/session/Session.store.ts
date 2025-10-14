@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { ISessionStore } from "./Session.store.types";
-import { ISignInRequest } from "../../api/data-details";
+import { ISignInRequest, ISignInResponse } from "../../api/data-details";
 import { DataHolder } from "@force-dev/utils";
 import { Api } from "../../api/Api";
 import { ApiTokenProvider } from "../../api/ApiToken.provider";
@@ -40,7 +40,7 @@ class SessionStore implements ISessionStore {
     this._tokenProvider.clear();
   }
 
-  private _dataResponse(data: any) {
+  private _dataResponse(data: ISignInResponse): void {
     if (data === null) {
       this._tokenProvider.clear();
       this.dataHolder.setError("Нет данных");

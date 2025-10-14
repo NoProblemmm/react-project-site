@@ -6,8 +6,9 @@ import { Button } from "../../components/ui/button/Button";
 import { Input } from "../../components/ui/input/Inpit";
 import { Typography } from "antd";
 import "./auth.css";
+import { FC } from "react";
 
-export const SignIn = () => {
+export const SignIn: FC = () => {
   const {
     handleNavigateSignUpForm,
     handleLogin,

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FC } from "react";
 import { Trans } from "@lingui/react/macro";
 import { Drawer, Layout } from "antd";
 import { Card, Button } from "antd";
@@ -9,7 +9,7 @@ import { useSiderLogic } from "./hooks/useSiderLogic";
 import "./AppSider.css";
 const { Sider } = Layout;
 
-export const AppSider = observer(() => {
+export const AppSider: FC = observer(() => {
   const {
     sizeWindow,
     taskBook,

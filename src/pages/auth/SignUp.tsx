@@ -8,8 +8,9 @@ import { Input } from "../../components/ui/input/Inpit";
 import { Typography } from "antd";
 import { Button } from "../../components/ui/button/Button";
 import "./auth.css";
+import { FC } from "react";
 
-export const SignUp = observer(() => {
+export const SignUp: FC = observer(() => {
   const { handleNavigateSignInForm, onSubmit } = useSignUpN();
 
   const {

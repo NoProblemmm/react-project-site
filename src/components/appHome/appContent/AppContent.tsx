@@ -1,14 +1,15 @@
-import React from "react";
+import React, { FC, memo } from "react";
 import { Layout, Button, Divider, List, Checkbox, Progress } from "antd";
 import { observer } from "mobx-react-lite";
 import { Trans } from "@lingui/react/macro";
 import { t } from "@lingui/core/macro";
 import { taskBookStore } from "../../../store/taskBookData/TaskBook.store";
 import "./AppContent.styles.css";
+import { Task } from "../../../store/taskBookData/TaskBook.store.types";
 
 const { Content } = Layout;
 
-export const AppContent = observer(() => {
+export const AppContent: FC = observer(() => {
   const { deleteBook, selectedBook, clearSelectBook } = taskBookStore;
 
   if (!selectedBook || selectedBook == null) {
@@ -32,7 +33,7 @@ export const AppContent = observer(() => {
     taskBookStore.changeTaskCompletion(selectedBook.id, index, newComplited);
   };
   const completedCount = selectedBook.tasks.filter(
-    (task: any) => task.complited
+    (task: Task) => task.complited
   ).length;
 
   const progressValue =
@@ -127,4 +128,4 @@ export const AppContent = observer(() => {
     </>
   );
 });
-export default AppContent;
+export default memo(AppContent);

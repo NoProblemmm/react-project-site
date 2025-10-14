@@ -2,19 +2,13 @@ import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import { useNavigate } from "@tanstack/react-router";
 import { useSessionStore } from "../../store/session/Session.store";
-
-import { useApiTokenProvider } from "../../api/ApiToken.provider";
-import { Layout, Spin } from "antd";
-
-// @ts-ignore
-import { AppHeader } from "@components/appHome/AppHeader/AppHeader";
-// @ts-ignore
-import { AppSider } from "@components/appHome/AppSider/AppSider";
-// @ts-ignore
-import { AppFooter } from "@components/appHome/AppFooter/AppFooter";
-// @ts-ignore
-import { AppContent } from "@components/appHome/AppContent/AppContent";
 import { Api } from "../../api/Api";
+import { useApiTokenProvider } from "../../api/ApiToken.provider";
+import { AppHeader } from "@components/appHome/appHeader/AppHeader";
+import { AppSider } from "@components/appHome/appSider/AppSider";
+import { AppFooter } from "@components/appHome/appFooter/AppFooter";
+import { AppContent } from "@components/appHome/appContent/AppContent";
+import { Layout, Spin } from "antd";
 
 function HomePage() {
   const [isLoading, setIsLoading] = useState(true);

@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { FC, memo } from "react";
 import { t } from "@lingui/core/macro";
 import { Link } from "@tanstack/react-router";
 import { Trans } from "@lingui/react/macro";
@@ -19,7 +19,7 @@ type Props = {
   showButtons?: boolean;
 };
 
-export const AppHeader = memo(
+export const AppHeader: FC<Props> = memo(
   observer(({ showButtons }: Props) => {
     const { isAutentificate } = useSessionStore;
     const {
@@ -37,6 +37,7 @@ export const AppHeader = memo(
       theme,
       messageBook,
     } = useHeaderLogic();
+
     return (
       <>
         <Header className="header-custom text-center flex-col">

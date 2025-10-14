@@ -49,7 +49,8 @@ export const useHeaderLogic = () => {
       taskBookStore.clearMessage();
     }
   };
-  const toggleMenu = () => setMenuOpen((prev) => !prev);
+
+  const toggleMenu = useCallback(() => setMenuOpen((prev) => !prev), []);
 
   const logout = () => {
     isLogout();

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Layout, Typography } from "antd";
 
 const { Footer } = Layout;
 
-export function AppFooter() {
+export const AppFooter: FC = () => {
   let [timer, setTimer] = useState(new Date());
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -19,4 +19,4 @@ export function AppFooter() {
       </Typography>
     </Footer>
   );
-}
+};

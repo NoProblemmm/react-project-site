@@ -1,7 +1,7 @@
-import { memo } from "react";
+import { FC, memo } from "react";
 import { Layout, Typography } from "antd";
 
-const AppAbout = memo(() => {
+const AppAbout: FC = memo(() => {
   return (
     <Layout>
       <div className=" w-full h-200">

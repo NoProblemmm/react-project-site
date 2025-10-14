@@ -1,14 +1,15 @@
-import { useEffect } from "react";
+import { FC, useEffect, memo } from "react";
 import { observer } from "mobx-react-lite";
 import todosStore from "../../store/taskBookData/Todos.store";
 import { List, Typography, Spin } from "antd";
 
-const AppTodos = observer(() => {
+const AppTodos: FC = observer(() => {
   const { getAll, todos, isLoading } = todosStore;
 
   useEffect(() => {
     getAll();
   }, [getAll]);
+
   return (
     <div>
       {!isLoading ? (
@@ -41,4 +42,4 @@ const AppTodos = observer(() => {
     </div>
   );
 });
-export default AppTodos;
+export default memo(AppTodos);

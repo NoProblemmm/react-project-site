@@ -9,7 +9,7 @@ export const useSignInN = () => {
   const navigate = useNavigate();
   const signInStore = useSessionStore.signInStore;
   const isAut = useSessionStore.dataHolder;
-  const [messageApi, contextHolder] = message.useMessage();
+  const [messageApi] = message.useMessage();
 
   const authSuccessMes = () => {
     messageApi.open({
