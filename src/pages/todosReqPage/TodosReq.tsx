@@ -1,7 +1,5 @@
 import { Layout } from "antd";
-// @ts-ignore
 import { AppHeader } from "@components/appHome/appHeader/AppHeader";
-// @ts-ignore
 import AppTodos from "@components/appTodos/AppTodos";
 
 export function TodosReq() {
