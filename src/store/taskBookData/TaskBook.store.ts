@@ -1,9 +1,9 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { taskBook } from "../../tasks-file";
-import { Book } from "./TaskBook.store.types";
+import { IBook } from "./TaskBook.store.types";
 class TaskBookStore {
-  taskBooks: Book[] = [];
-  selectedBook: Book | null = null;
+  taskBooks: IBook[] = [];
+  selectedBook: IBook | null = null;
   messageBook: String[] = [];
 
   constructor() {
@@ -11,7 +11,7 @@ class TaskBookStore {
     this.taskBooks = taskBook.taskBooks;
   }
 
-  addBook = (newBook: Book) => {
+  addBook = (newBook: IBook) => {
     this.taskBooks.push(newBook);
     this.messageBook?.push(`Книга ${newBook.title} добавлена`);
   };
@@ -30,13 +30,13 @@ class TaskBookStore {
   };
 
   deleteBook = (id: number | string) => {
-    const deletedBook = this.taskBooks.find((book: Book) => book.id === id);
-    this.taskBooks = this.taskBooks.filter((book: Book) => book.id !== id);
+    const deletedBook = this.taskBooks.find((book: IBook) => book.id === id);
+    this.taskBooks = this.taskBooks.filter((book: IBook) => book.id !== id);
     this.selectedBook = null;
     this.messageBook?.push(`Книга ${deletedBook?.title} удалена`);
   };
 
-  selectBook = (book: Book) => {
+  selectBook = (book: IBook) => {
     this.selectedBook = book;
     console.log("Открыта книга:", book.title);
   };

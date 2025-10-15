@@ -2,7 +2,6 @@ import React, { FC } from "react";
 import { Trans } from "@lingui/react/macro";
 import { Drawer, Layout } from "antd";
 import { Card, Button } from "antd";
-import { taskBookStore } from "../../../store/taskBookData/TaskBook.store";
 import { observer } from "mobx-react-lite";
 import { SearchInput } from "../../ui/searchInput/SearchInput";
 import { useSiderLogic } from "./hooks/useSiderLogic";
@@ -53,7 +52,7 @@ export const AppSider: FC = observer(() => {
             onClose={toggleDrawer}
             getContainer={false}
           >
-            <div className="scrollbar-sider w-[99%] overflow-x-hidden h-[39rem] overflow-y-scroll ml-[2px]">
+            <div className="scrollbar-sider w-[99%] overflow-x-hidden h-[39rem] overflow-y-scroll ">
               {taskBook.map((book) => (
                 <Card
                   key={book.id}

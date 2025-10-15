@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 import { Trans } from "@lingui/react/macro";
 import { t } from "@lingui/core/macro";
 import { Form, Input, Button, Divider, List, Typography, Alert } from "antd";
-import { Note } from "../../../store/taskBookData/TaskBook.store.types";
+import { INote } from "../../../store/taskBookData/TaskBook.store.types";
 import { noteBookStore } from "../../../store/taskBookData/Notes.store";
 
 export const AppNotes: FC = observer(() => {
@@ -14,7 +14,7 @@ export const AppNotes: FC = observer(() => {
   const addNewNote = (values: { note: string }) => {
     if (!values.note.trim()) return;
 
-    const newNote: Note = {
+    const newNote: INote = {
       id: nextId++,
       title: values.note,
     };

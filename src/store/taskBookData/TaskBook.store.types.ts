@@ -1,16 +1,16 @@
-export interface Book {
+export interface IBook {
   id: number;
   title: string;
-  tasks: Task[];
+  tasks: ITask[];
 }
 
-export interface Task {
+export interface ITask {
   id: number;
   name: string;
   complited: boolean;
 }
 
-export interface Note {
+export interface INote {
   id: number;
   title: string;
 }

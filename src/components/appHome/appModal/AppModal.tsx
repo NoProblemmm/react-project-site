@@ -1,7 +1,7 @@
 import React, { memo, FC } from "react";
 import { Trans } from "@lingui/react/macro";
 import { t } from "@lingui/core/macro";
-import { Book, Task } from "../../../store/taskBookData/TaskBook.store.types";
+import { IBook, ITask } from "../../../store/taskBookData/TaskBook.store.types";
 import { taskBookStore } from "../../../store/taskBookData/TaskBook.store";
 import { CloseOutlined } from "@ant-design/icons";
 import { Button, Card, Form, Input, Space, Alert, message } from "antd";
@@ -20,10 +20,10 @@ export const AppModal: FC<Props> = memo(({ toggleModal }: Props) => {
     if (values.items && values.items.length > 0) {
       const firstItem = values.items[0];
       console.log(values);
-      const newBook: Book = {
+      const newBook: IBook = {
         id: +taskBookStore.taskBooks.length + 1,
         title: firstItem.title,
-        tasks: firstItem.tasks.map((taskItem: Task) => ({
+        tasks: firstItem.tasks.map((taskItem: ITask) => ({
           id: count++,
           name: taskItem.name,
           complited: false,

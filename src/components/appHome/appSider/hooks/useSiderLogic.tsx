@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { taskBookStore } from "../../../../store/taskBookData/TaskBook.store";
-import { Book } from "../../../../store/taskBookData/TaskBook.store.types";
+import { IBook } from "../../../../store/taskBookData/TaskBook.store.types";
 
 export const useSiderLogic = () => {
   const [sizeWindow, setSizeWindow] = useState<boolean>(
@@ -39,7 +39,7 @@ export const useSiderLogic = () => {
   };
   const taskBook = searchCardBook();
 
-  const selectedBook = (book: Book) => {
+  const selectedBook = (book: IBook) => {
     selectBook(book);
     setDrawerSider(false);
   };

@@ -5,7 +5,7 @@ import { Trans } from "@lingui/react/macro";
 import { t } from "@lingui/core/macro";
 import { taskBookStore } from "../../../store/taskBookData/TaskBook.store";
 import "./AppContent.styles.css";
-import { Task } from "../../../store/taskBookData/TaskBook.store.types";
+import { ITask } from "../../../store/taskBookData/TaskBook.store.types";
 
 const { Content } = Layout;
 
@@ -33,7 +33,7 @@ export const AppContent: FC = observer(() => {
     taskBookStore.changeTaskCompletion(selectedBook.id, index, newComplited);
   };
   const completedCount = selectedBook.tasks.filter(
-    (task: Task) => task.complited
+    (task: ITask) => task.complited
   ).length;
 
   const progressValue =
@@ -84,7 +84,7 @@ export const AppContent: FC = observer(() => {
               }
               bordered
               dataSource={selectedBook.tasks}
-              rowKey={(task) => task.id}
+              rowKey={(task: ITask) => task.id}
               renderItem={(task, index) => (
                 <List.Item className="text-amber-50">
                   <div className="content-custom flex justify-between items-center w-full">

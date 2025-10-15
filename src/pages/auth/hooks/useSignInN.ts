@@ -27,10 +27,6 @@ export const useSignInN = () => {
 
   const handleLogin = useCallback(async (data: ISignInRequest) => {
     setIsLoading(true);
-    if (data.password === "adminnn" && data.login === "admin") {
-      isAut.setData("adad");
-      navigate({ to: "/" });
-    }
     try {
       const response = await signInStore(data);
       if (!response) {
