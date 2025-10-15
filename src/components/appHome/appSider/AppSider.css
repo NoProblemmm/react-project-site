@@ -27,7 +27,8 @@
 }
 
 .drawer-sider {
-  width: 95% !important;
+  width: 100% !important;
+  padding: 0 9% 0 0;
   background-color: var(--sider-bg-color) !important;
   color: var(--text-color) !important;
 }
