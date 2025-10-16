@@ -50,7 +50,10 @@ export const AppHeader: FC<Props> = memo(
           {!sizeWindow || headerMenuOpen ? (
             <>
               {showButtons && (
-                <Button onClick={toggleModal} className=" sm:m-1">
+                <Button
+                  onClick={toggleModal}
+                  className="w-full sm:w-auto sm:m-1"
+                >
                   <Trans>New Task</Trans>
                 </Button>
               )}
